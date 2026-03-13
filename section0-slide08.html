@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Web Fundamentals - Slide 8</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">VERSION CONTROL</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 4rem;">
+                GIT BASICS<br>AND GITHUB
+            </h1>
+            
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    Git is essential for any modern developer. Version control, collaboration, and cloud backup.
+                </p>
+                
+                <div class="code-block">
+                    <pre class="code-text"># Initialize Git repository
+git init
+
+# Add files to staging
+git add .
+
+# Create commit with message
+git commit -m "Initial commit: HTML Pokedex structure"
+
+# Connect to GitHub
+git remote add origin https://github.com/usuario/html-pokedex.git
+
+# Push changes
+git push -u origin main</pre>
+                </div>
+                
+                <div class="mt-6 grid grid-cols-3 gap-4">
+                    <div style="background-color: rgba(220, 10, 45, 0.1); padding: 1rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2">INIT</p>
+                        <p class="body-text" style="font-size: 0.95rem;">Initialize the repository</p>
+                    </div>
+                    <div style="background-color: rgba(120, 200, 80, 0.1); padding: 1rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2">COMMIT</p>
+                        <p class="body-text" style="font-size: 0.95rem;">Save changes</p>
+                    </div>
+                    <div style="background-color: rgba(104, 144, 240, 0.1); padding: 1rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2">PUSH</p>
+                        <p class="body-text" style="font-size: 0.95rem;">Push to GitHub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 8/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 66.66%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section0-slide07.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section0-slide09.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>

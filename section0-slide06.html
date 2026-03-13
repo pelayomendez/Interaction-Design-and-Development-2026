@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Web Fundamentals - Slide 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">EVENT LISTENERS</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 4rem;">
+                INTERACTIVITY<br>WITH EVENTS
+            </h1>
+            
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    Event Listeners allow us to respond to user actions. We implement filters by Pokémon type.
+                </p>
+                
+                <div class="code-block">
+                    <pre class="code-text">const botonesHeader = document.querySelectorAll(".btn-header");
+
+botonesHeader.forEach(boton => {
+    boton.addEventListener("click", (event) => {
+        const botonId = event.currentTarget.id;
+        listaPokemon.innerHTML = "";
+        
+        for (let i = 1; i <= 151; i++) {
+            fetch(URL + i)
+                .then((response) => response.json())
+                .then(data => {
+                    if(botonId === "ver-todos") {
+                        mostrarPokemon(data);
+                    } else {
+                        const tipos = data.types.map(
+                            type => type.type.name
+                        );
+                        if (tipos.includes(botonId)) {
+                            mostrarPokemon(data);
+                        }
+                    }
+                })
+        }
+    })
+})</pre>
+                </div>
+                
+                <div class="mt-4">
+                    <p class="list-text">
+                        <i class="fas fa-mouse-pointer mr-2" style="color: var(--pokemon-electric);"></i> 
+                        Click, filter and real time DOM updates with JavaScript
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 6/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 50%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section0-slide05.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section0-slide07.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>

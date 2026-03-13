@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Web Fundamentals - Slide 11</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">COMPLETE PROJECT</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 3.5rem;">
+                HTML POKÉDEX<br>FINAL RESULT
+            </h1>
+            
+            <div class="max-w-3xl">
+                <p class="body-text mb-6">
+                    We've built a functional Pokédex with vanilla HTML, CSS, and JavaScript. 
+                    This project demonstrates the essential fundamentals of web development.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-bottom: 2rem;">
+                    <div style="background-color: rgba(220, 10, 45, 0.1); padding: 1.25rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2"><i class="fas fa-check-circle mr-2"></i>FEATURES</p>
+                        <p class="body-text" style="font-size: 0.95rem;">
+                            • Fetch 151 Pokémon<br>
+                            • Filter by type<br>
+                            • Responsive grid<br>
+                            • Modern design
+                        </p>
+                    </div>
+                    
+                    <div style="background-color: rgba(104, 144, 240, 0.1); padding: 1.25rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2"><i class="fas fa-tools mr-2"></i>TECHNOLOGIES</p>
+                        <p class="body-text" style="font-size: 0.95rem;">
+                            • Semantic HTML5<br>
+                            • CSS Grid + Flexbox<br>
+                            • Fetch API<br>
+                            • Event Listeners
+                        </p>
+                    </div>
+                    
+                    <div style="background-color: rgba(120, 200, 80, 0.1); padding: 1.25rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2"><i class="fas fa-code-branch mr-2"></i>CONTROL</p>
+                        <p class="body-text" style="font-size: 0.95rem;">
+                            • Git repository<br>
+                            • GitHub hosting<br>
+                            • Version control<br>
+                            • Collaboration
+                        </p>
+                    </div>
+                    
+                    <div style="background-color: rgba(248, 208, 48, 0.1); padding: 1.25rem; border-radius: 0.5rem;">
+                        <p class="label-text mb-2"><i class="fas fa-rocket mr-2"></i>DEPLOYMENT</p>
+                        <p class="body-text" style="font-size: 0.95rem;">
+                            • GitHub Pages<br>
+                            • Live website<br>
+                            • Auto-update<br>
+                            • Free HTTPS
+                        </p>
+                    </div>
+                </div>
+                
+                <div style="background-color: rgba(0, 0, 0, 0.05); padding: 1.25rem; border-radius: 0.5rem; text-align: center;">
+                    <p class="body-text" style="margin: 0;">
+                        <strong>🎯 Solid foundation:</strong> These fundamentals are essential to understand modern frameworks
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 11/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 91.66%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section0-slide10.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section0-slide12.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>

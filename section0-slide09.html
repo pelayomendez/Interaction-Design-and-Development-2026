@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Web Fundamentals - Slide 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">GITHUB UI</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 4rem;">
+                GITHUB INTERFACE<br>OVERVIEW
+            </h1>
+            
+            <div class="max-w-3xl">
+                <p class="body-text mb-6">
+                    GitHub offers a powerful web interface for managing repositories, reviewing code, and collaborating with other developers.
+                </p>
+                
+                <div class="list-text mb-6">
+                    <i class="fas fa-folder-open mr-3" style="color: var(--pokemon-fire);"></i> 
+                    <strong>Repositories:</strong> Project and code management<br>
+                    
+                    <i class="fas fa-code-branch mr-3" style="color: var(--pokemon-water);"></i> 
+                    <strong>Branches:</strong> Parallel development and features<br>
+                    
+                    <i class="fas fa-code-pull-request mr-3" style="color: var(--pokemon-grass);"></i> 
+                    <strong>Pull Requests:</strong> Collaborative code review<br>
+                    
+                    <i class="fas fa-bug mr-3" style="color: var(--pokemon-electric);"></i> 
+                    <strong>Issues:</strong> Bug and task tracking<br>
+                    
+                    <i class="fas fa-rocket mr-3" style="color: var(--pokemon-red);"></i> 
+                    <strong>Actions:</strong> CI/CD and automation
+                </div>
+                
+                <div style="background-color: rgba(0, 0, 0, 0.05); padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid #000;">
+                    <p class="body-text" style="margin: 0;">
+                        <strong>💡 We'll explore:</strong> Navigation through the interface, repository creation, 
+                        and file management directly from the browser.
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 9/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 75%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section0-slide08.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section0-slide10.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>
