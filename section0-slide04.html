@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 0: Web Fundamentals - Slide 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">JAVASCRIPT VANILLA</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 4rem;">
+                FETCH API AND<br>DYNAMIC DATA
+            </h1>
+            
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    JavaScript allows us to consume REST APIs and dynamically update the DOM. Here we get data from the PokeAPI.
+                </p>
+                
+                <div class="code-block">
+                    <pre class="code-text">const listaPokemon = document.querySelector("#listaPokemon");
+let URL = "https://pokeapi.co/api/v2/pokemon/";
+
+// Fetch primeros 151 Pokemon
+for (let i = 1; i <= 151; i++) {
+    fetch(URL + i)
+        .then((response) => response.json())
+        .then(data => mostrarPokemon(data))
+}
+
+function mostrarPokemon(poke) {
+    let tipos = poke.types.map((type) => 
+        `&lt;p class="${type.type.name} tipo"&gt;${type.type.name}&lt;/p&gt;`
+    );
+    
+    const div = document.createElement("div");
+    div.classList.add("pokemon");
+    div.innerHTML = `
+        &lt;div class="pokemon-imagen"&gt;
+            &lt;img src="${poke.sprites.other["official-artwork"].front_default}"&gt;
+        &lt;/div&gt;
+        &lt;h2&gt;${poke.name}&lt;/h2&gt;
+        ${tipos.join('')}
+    `;
+    listaPokemon.append(div);
+}</pre>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 4/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 33.33%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section0-slide03.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section0-slide05.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>

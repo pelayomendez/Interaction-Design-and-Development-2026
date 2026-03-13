@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Stack + IA - Curso Completo</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+    <style>
+        body {
+            overflow: auto;
+        }
+        
+        .index-container {
+            min-height: 100vh;
+            background-color: #ececec;
+            padding: 3rem 2rem;
+        }
+        
+        .content-wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .learning-path {
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .path-line {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 2rem;
+            position: relative;
+        }
+        
+        .path-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+        
+        .path-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background-color: #000000;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 1.5rem;
+        }
+        
+        .path-arrow {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            width: 100%;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.2);
+            z-index: -1;
+        }
+        
+        .path-step:last-child .path-arrow {
+            display: none;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-box {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Saira Condensed', sans-serif;
+            font-weight: 900;
+            font-size: 3rem;
+            color: #000000;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: rgba(0, 0, 0, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="index-container">
+        <div class="content-wrapper">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <div class="borcelle-pill" style="display: inline-block; margin-bottom: 2rem;">
+                    FULL STACK + AI
+                </div>
+                <h1 class="header-text" style="margin-bottom: 1.5rem;">
+                    WEB DEVELOPMENT<br>WITH ARTIFICIAL<br>INTELLIGENCE
+                </h1>
+                <p class="body-text" style="max-width: 800px; margin: 0 auto; color: rgba(0, 0, 0, 0.7);">
+                    A complete journey from hand-coded fundamentals to AI-assisted 
+                    full-stack development. Learn HTML, CSS, JavaScript, Astro, AI APIs, and Flask.
+                </p>
+                
+                <!-- Stats -->
+                <div class="stats-container">
+                    <div class="stat-box">
+                        <div class="stat-number">4</div>
+                        <div class="stat-label">Sections</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">48</div>
+                        <div class="stat-label">Slides</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sections Grid -->
+            <div class="sections-grid">
+                <!-- Section 0 -->
+                <div class="section-card" onclick="navigateToSection(0)">
+                    <div class="section-number">00</div>
+                    <h2 class="section-title">Web Fundamentals</h2>
+                    <p class="section-description">
+                        <i class="fas fa-check-circle mr-2"></i> HTML, CSS, and JavaScript<br>
+                        <i class="fas fa-check-circle mr-2"></i> Vanilla Pokédex Project<br>
+                        <i class="fas fa-check-circle mr-2"></i> Figma and MCP tools<br>
+                        <i class="fas fa-check-circle mr-2"></i> GitHub Pages deployment
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                        <span class="progress-indicator">12 slides</span>
+                        <button class="section-button">
+                            START
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Section 1 -->
+                <div class="section-card" onclick="navigateToSection(1)">
+                    <div class="section-number">01</div>
+                    <h2 class="section-title">Astro Framework</h2>
+                    <p class="section-description">
+                        <i class="fas fa-check-circle mr-2"></i> Transition from Vanilla to Astro<br>
+                        <i class="fas fa-check-circle mr-2"></i> Component architecture<br>
+                        <i class="fas fa-check-circle mr-2"></i> PokeAPI integration<br>
+                        <i class="fas fa-check-circle mr-2"></i> Dynamic routing
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                        <span class="progress-indicator">12 slides</span>
+                        <button class="section-button">
+                            START
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Section 2 -->
+                <div class="section-card" onclick="navigateToSection(2)">
+                    <div class="section-number">02</div>
+                    <h2 class="section-title">AI Integration</h2>
+                    <p class="section-description">
+                        <i class="fas fa-check-circle mr-2"></i> Google Gemini API<br>
+                        <i class="fas fa-check-circle mr-2"></i> AI content generation<br>
+                        <i class="fas fa-check-circle mr-2"></i> Islands Architecture<br>
+                        <i class="fas fa-check-circle mr-2"></i> Interactive components
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                        <span class="progress-indicator">12 slides</span>
+                        <button class="section-button">
+                            START
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Section 3 -->
+                <div class="section-card" onclick="navigateToSection(3)">
+                    <div class="section-number">03</div>
+                    <h2 class="section-title">Full Stack</h2>
+                    <p class="section-description">
+                        <i class="fas fa-check-circle mr-2"></i> Backend with Flask<br>
+                        <i class="fas fa-check-circle mr-2"></i> REST APIs and Python<br>
+                        <i class="fas fa-check-circle mr-2"></i> Frontend-Backend sync<br>
+                        <i class="fas fa-check-circle mr-2"></i> AI image generation
+                    </p>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 1rem;">
+                        <span class="progress-indicator">12 slides</span>
+                        <button class="section-button">
+                            START
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Learning Path -->
+            <div class="learning-path">
+                <h3 class="subheader-text" style="text-align: center; margin-bottom: 1rem;">
+                    LEARNING PATH
+                </h3>
+                <p class="body-text" style="text-align: center; color: rgba(0, 0, 0, 0.7); margin-bottom: 2rem;">
+                    Logical progression from hand-coded fundamentals to full-stack AI systems
+                </p>
+                
+                <div class="path-line">
+                    <div class="path-step">
+                        <div class="path-circle">0</div>
+                        <p class="label-text" style="margin-top: 1rem;">Fundamentos</p>
+                        <div class="path-arrow"></div>
+                    </div>
+                    <div class="path-step">
+                        <div class="path-circle">1</div>
+                        <p class="label-text" style="margin-top: 1rem;">Framework</p>
+                        <div class="path-arrow"></div>
+                    </div>
+                    <div class="path-step">
+                        <div class="path-circle">2</div>
+                        <p class="label-text" style="margin-top: 1rem;">IA</p>
+                        <div class="path-arrow"></div>
+                    </div>
+                    <div class="path-step">
+                        <div class="path-circle">3</div>
+                        <p class="label-text" style="margin-top: 1rem;">Full Stack</p>
+                        <div class="path-arrow"></div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer -->
+            <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 2px solid rgba(0, 0, 0, 0.1);">
+                <p class="body-text" style="color: rgba(0, 0, 0, 0.6);">
+                    <strong>Prof. Pelayo Méndez</strong> • March 2026 • ELISAVA
+                </p>
+                <p class="body-text" style="color: rgba(0, 0, 0, 0.5); margin-top: 0.5rem; font-size: 1rem;">
+                    <i class="fas fa-keyboard mr-2"></i> Use keyboard arrows to navigate between slides
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>
