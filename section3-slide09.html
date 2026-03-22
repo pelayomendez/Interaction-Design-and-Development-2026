@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 3: Full Stack Development - Slide 9</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">CROSS-ORIGIN REQUESTS</span>
+            </div>
+            
+            <h1 class="header-text mb-6">
+                CORS CONFIGURATION
+            </h1>
+            
+            <div class="max-w-3xl">
+                <p class="body-text mb-6">
+                    CORS (Cross-Origin Resource Sharing) allows your frontend (port 4321) 
+                    to access the backend (port 5000). Flask requires <code>flask-cors</code> to be configured.
+                </p>
+                
+                <div class="code-block">
+<pre><code>from flask import Flask
+from flask_cors import CORS
+
+app = Flask(__name__)
+
+# Enable CORS for all origins (development)
+CORS(app)
+
+# Or specific for production
+CORS(app, resources={
+    r"/api/*": {
+        "origins": ["https://mi-frontend.com"],
+        "methods": ["GET", "POST"],
+        "allow_headers": ["Content-Type"]
+    }
+})
+
+@app.route('/api/data')
+def get_data():
+    return jsonify({'message': 'CORS enabled!'})
+</code></pre>
+                </div>
+                
+                <p class="body-text mt-4">
+                    <i class="fas fa-shield-alt mr-2" style="color: var(--pokemon-red);"></i>
+                    <strong>Security:</strong> In production, limit specific origins
+                </p>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 9/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 75%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section3-slide08.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section3-slide10.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>
