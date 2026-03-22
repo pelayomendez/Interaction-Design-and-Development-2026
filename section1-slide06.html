@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1: Astro Basics - Slide 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">LAYOUTS</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 4rem;">
+                REUSABLE<br>TEMPLATES
+            </h1>
+            
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    Layouts allow sharing common structure between pages. Define once, use everywhere.
+                </p>
+                
+                <div class="code-block">
+                    <pre class="code-text">---
+// layouts/Layout.astro
+import Header from '../components/Header.astro';
+
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+---
+
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta charset="UTF-8" /&gt;
+        &lt;title&gt;{title}&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;Header /&gt;
+        &lt;main&gt;
+            &lt;slot /&gt;  &lt;!-- Page content --&gt;
+        &lt;/main&gt;
+    &lt;/body&gt;
+&lt;/html&gt;</pre>
+                </div>
+                
+                <div class="mt-4">
+                    <p class="list-text">
+                        <i class="fas fa-layer-group mr-2" style="color: var(--pokemon-fire);"></i>
+                        The &lt;slot /&gt; is replaced with the content of each page
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 6/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 50%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section1-slide05.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section1-slide07.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>

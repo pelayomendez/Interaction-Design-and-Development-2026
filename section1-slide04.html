@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1: Astro Basics - Slide 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">.ASTRO COMPONENTS</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 4rem;">
+                YOUR FIRST<br>COMPONENT
+            </h1>
+            
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    Astro components have two parts: the code (frontmatter) and the HTML template. Simple and powerful.
+                </p>
+                
+                <div class="code-block">
+                    <pre class="code-text">---
+// Component Script (Frontmatter)
+// Executes on the server at build time
+interface Props {
+    name: string;
+    url: string;
+}
+
+const { name, url } = Astro.props;
+
+const response = await fetch(url);
+const data = await response.json();
+---
+
+&lt;!-- Component Template --&gt;
+&lt;div class="pokemon-card"&gt;
+    &lt;img src={data.sprites.front_default} alt={name} /&gt;
+    &lt;h3&gt;{name.toUpperCase()}&lt;/h3&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+    .pokemon-card {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 1rem;
+    }
+&lt;/style&gt;</pre>
+                </div>
+                
+                <div class="mt-4">
+                    <p class="list-text">
+                        <i class="fas fa-info-circle mr-2" style="color: var(--pokemon-blue);"></i>
+                        The code between --- executes only on the server
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 4/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 33.33%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section1-slide03.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section1-slide05.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>
