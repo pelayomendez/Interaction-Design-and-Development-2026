@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 1: Astro Basics - Slide 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-16 pb-32 flex-1">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">COMPARISON</span>
+            </div>
+            
+            <h1 class="header-text mb-6" style="font-size: 3.5rem;">
+                VANILLA VS ASTRO
+            </h1>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; height: 520px;">
+                <!-- Vanilla -->
+                <div>
+                    <div class="split-label">
+                        <span class="label-text">VANILLA JS</span>
+                    </div>
+                    <div class="split-panel" style="height: calc(100% - 60px);">
+                        <pre class="code-text" style="font-size: 0.8rem;">// main.js
+const pokemonList = 
+  document.querySelector("#pokemonList");
+
+function showPokemon(poke) {
+    const div = document.createElement("div");
+    div.classList.add("pokemon");
+    div.innerHTML = `
+        &lt;img src="${poke.sprites.front_default}"&gt;
+        &lt;h3&gt;${poke.name}&lt;/h3&gt;
+    `;
+    pokemonList.append(div);
+}
+
+for (let i = 1; i <= 10; i++) {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${i}`)
+        .then(r => r.json())
+        .then(data => mostrarPokemon(data))
+}</pre>
+                        <p class="body-text mt-3" style="font-size: 0.9rem; color: rgba(0,0,0,0.6);">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            Manual DOM manipulation
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Astro -->
+                <div>
+                    <div class="split-label">
+                        <span class="label-text">ASTRO</span>
+                    </div>
+                    <div class="split-panel" style="height: calc(100% - 60px);">
+                        <pre class="code-text" style="font-size: 0.8rem;">---
+// PokemonGallery.astro
+const response = await fetch(
+  'https://pokeapi.co/api/v2/pokemon?limit=10'
+);
+const jsonResponse = await response.json();
+const results = jsonResponse.results;
+---
+
+&lt;div&gt;
+    &lt;ul&gt;
+       {results.map((pokemon) =&gt; 
+            &lt;PokemonCard 
+              name={pokemon.name}
+              url={pokemon.url}
+            /&gt;
+       )}
+    &lt;/ul&gt;
+&lt;/div&gt;</pre>
+                        <p class="body-text mt-3" style="font-size: 0.9rem; color: rgba(0,0,0,0.6);">
+                            <i class="fas fa-check-circle mr-2" style="color: var(--pokemon-grass);"></i>
+                            Declarative and reusable components
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 5/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 41.66%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section1-slide04.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section1-slide06.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>

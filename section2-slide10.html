@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 2: AI Integration - Slide 10</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+        
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+        
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">SERVER ENDPOINTS</span>
+            </div>
+            
+            <h1 class="header-text mb-6">
+                API ROUTES IN ASTRO
+            </h1>
+            
+            <div class="max-w-3xl">
+                <p class="body-text mb-6">
+                    Astro allows creating API endpoints in <code>src/pages/api/</code>. 
+                    They are serverless functions that handle HTTP requests and return JSON.
+                </p>
+                
+                <div class="code-block">
+<pre><code>// src/pages/api/generate-pokemon.ts
+import type { APIRoute } from 'astro';
+import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GEMINI_API_KEY } from "astro:env/server";
+
+export const GET: APIRoute = async () => {
+  const genAI = new GoogleGenerativeAI(GEMINI_API_KEY);
+  const model = genAI.getGenerativeModel({ 
+    model: "gemini-1.5-flash" 
+  });
+
+  const result = await model.generateContent(
+    "Generate a fictional Pokemon..."
+  );
+  
+  return new Response(
+    JSON.stringify(result.response.text()),
+    { headers: { 'Content-Type': 'application/json' } }
+  );
+};</code></pre>
+                </div>
+            </div>
+        </div>
+        
+
+        
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 10/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 83.33%;"></div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section2-slide09.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section2-slide11.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+    
+    <script src="navigation.js"></script>
+</body>
+</html>
