@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS BASICS — Modern CSS Syntax</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">CSS BASICS</span>
+    <ul class="nav__links">
+      <li><a href="#why">Why</a></li>
+      <li><a href="#custom-props">Variables</a></li>
+      <li><a href="#nesting">Nesting</a></li>
+      <li><a href="#selectors">Selectors</a></li>
+      <li><a href="#container">Container</a></li>
+      <li><a href="#color">Color</a></li>
+      <li><a href="#logical">Logical</a></li>
+    </ul>
+    <div class="nav__page-links">
+      <a href="page2.html" class="nav__page-link">&larr; Steps</a>
+      <a href="page4.html" class="nav__page-link">Practices &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero--page3" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Part 3</span>
+      <h1 class="hero__title">Modern CSS<br /><em>Syntax Basics</em></h1>
+      <p class="hero__sub">A practical guide to the new CSS features you can use today — no preprocessor required.</p>
+      <a href="#why" class="btn btn--primary">Get Started &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>var(--color)</span>
+      <span>.card { .title {} }</span>
+      <span>:has(.active)</span>
+      <span>@container</span>
+      <span>oklch(70% 0.15 240)</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 0: WHY MODERN CSS -->
+  <section class="slide slide--dark" id="why">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Intro</span>
+        <h2 class="slide__title">Why Learn Modern CSS Syntax?</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">CSS has evolved dramatically since 2020.</p>
+          <h3 class="slide__subtitle">Before:</h3>
+          <ul class="list list--bad">
+            <li>Needed Sass/Less for variables &amp; nesting</li>
+            <li>No way to query a parent element</li>
+            <li>Color manipulation required JS or preprocessors</li>
+          </ul>
+          <h3 class="slide__subtitle">Now:</h3>
+          <ul class="list list--good">
+            <li>Native variables, nesting, and scoping</li>
+            <li>Parent selectors with <code class="inline-code">:has()</code></li>
+            <li>Built-in color functions and container queries</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">before.scss</span>
+            </div>
+            <pre><code><span class="token-comment">/* Old way — needed Sass */</span>
+<span class="token-selector">$primary</span>: <span class="token-value">#6366f1</span>;
+
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">$primary</span>;
+
+  <span class="token-selector">.title</span> <span class="token-brace">{</span>
+    <span class="token-prop">font-size</span>: <span class="token-value">1.5rem</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">now.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Now — plain CSS! */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-primary)</span>;
+
+  <span class="token-selector">.title</span> <span class="token-brace">{</span>
+    <span class="token-prop">font-size</span>: <span class="token-value">1.5rem</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: CUSTOM PROPERTIES -->
+  <section class="slide slide--light" id="custom-props">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Syntax 1</span>
+        <h2 class="slide__title">Custom Properties (Variables)</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Define once, use everywhere — and they cascade.</p>
+          <div class="anatomy">
+            <div class="anatomy__row">
+              <span class="anatomy__part anatomy__part--declaration">--color-primary</span>
+              <span class="anatomy__sep">:</span>
+              <span class="anatomy__part anatomy__part--value">#6366f1</span>
+            </div>
+            <div class="anatomy__labels">
+              <span class="anatomy__label">Custom property</span>
+              <span class="anatomy__label anatomy__label--offset">Value</span>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key points:</h3>
+          <ul class="list list--good">
+            <li>Declared with <code class="inline-code">--</code> prefix</li>
+            <li>Accessed via <code class="inline-code">var(--name)</code></li>
+            <li>Cascade &amp; inherit like any CSS property</li>
+            <li>Can be overridden per selector or media query</li>
+          </ul>
+          <div class="badge badge--accent">Unlike Sass variables, they are live &amp; reactive</div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">tokens.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Define tokens on :root */</span>
+<span class="token-selector">:root</span> <span class="token-brace">{</span>
+  <span class="token-prop">--color-primary</span>: <span class="token-value">#6366f1</span>;
+  <span class="token-prop">--color-surface</span>: <span class="token-value">#ffffff</span>;
+  <span class="token-prop">--spacing-md</span>: <span class="token-value">1rem</span>;
+  <span class="token-prop">--radius</span>: <span class="token-value">0.5rem</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Override for dark mode */</span>
+<span class="token-selector">[data-theme="dark"]</span> <span class="token-brace">{</span>
+  <span class="token-prop">--color-surface</span>: <span class="token-value">#0f172a</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Use them anywhere */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-surface)</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">var(--spacing-md)</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-value">var(--radius)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Fallback value */</span>
+<span class="token-selector">.alert</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-danger, #ef4444)</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: NESTING -->
+  <section class="slide slide--dark" id="nesting">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Syntax 2</span>
+        <h2 class="slide__title">Native CSS Nesting</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Write nested rules directly in CSS — no preprocessor needed.</p>
+          <div class="transform-demo">
+            <div class="transform-demo__from">
+              <span class="transform-demo__label">Flat CSS</span>
+              <code>.card { }<br>.card .title { }</code>
+            </div>
+            <div class="transform-demo__arrow">&rarr;</div>
+            <div class="transform-demo__to">
+              <span class="transform-demo__label">Nested CSS</span>
+              <code>.card {<br>&nbsp;&nbsp;.title { }<br>}</code>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Rules:</h3>
+          <ul class="list list--neutral">
+            <li>Nested selectors start a new scope</li>
+            <li>Use <code class="inline-code">&amp;</code> to reference the parent selector</li>
+            <li>Media queries can be nested too</li>
+            <li>Supported in all modern browsers (2023+)</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">card.css</span>
+            </div>
+            <pre><code><span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">padding</span>: <span class="token-value">1.5rem</span>;
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-surface)</span>;
+
+  <span class="token-comment">/* Nested element */</span>
+  <span class="token-selector">.title</span> <span class="token-brace">{</span>
+    <span class="token-prop">font-size</span>: <span class="token-value">1.25rem</span>;
+    <span class="token-prop">font-weight</span>: <span class="token-value">700</span>;
+  <span class="token-brace">}</span>
+
+  <span class="token-comment">/* & references the parent */</span>
+  <span class="token-selector">&amp;:hover</span> <span class="token-brace">{</span>
+    <span class="token-prop">box-shadow</span>: <span class="token-value">0 4px 12px rgb(0 0 0 / 0.1)</span>;
+  <span class="token-brace">}</span>
+
+  <span class="token-comment">/* Modifier */</span>
+  <span class="token-selector">&amp;.card--featured</span> <span class="token-brace">{</span>
+    <span class="token-prop">border</span>: <span class="token-value">2px solid var(--color-primary)</span>;
+  <span class="token-brace">}</span>
+
+  <span class="token-comment">/* Nested media query */</span>
+  <span class="token-keyword">@media</span> (width < 768px) <span class="token-brace">{</span>
+    <span class="token-prop">padding</span>: <span class="token-value">1rem</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: MODERN SELECTORS -->
+  <section class="slide slide--light" id="selectors">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Syntax 3</span>
+        <h2 class="slide__title">Modern Selectors — :is() :where() :has()</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Three pseudo-classes that simplify complex selectors.</p>
+          <div class="selector-grid">
+            <div class="selector-grid__item selector-grid__item--is">
+              <code class="selector-grid__code">:is()</code>
+              <p>Matches any selector in the list. Takes the <strong>highest specificity</strong> of its arguments.</p>
+            </div>
+            <div class="selector-grid__item selector-grid__item--where">
+              <code class="selector-grid__code">:where()</code>
+              <p>Same as :is() but with <strong>zero specificity</strong>. Great for resets.</p>
+            </div>
+            <div class="selector-grid__item selector-grid__item--has">
+              <code class="selector-grid__code">:has()</code>
+              <p>The "parent selector" — style a parent based on its <strong>children</strong>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">selectors.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* :is() — shorter grouped selectors */</span>
+<span class="token-selector">:is(h1, h2, h3)</span> <span class="token-brace">{</span>
+  <span class="token-prop">line-height</span>: <span class="token-value">1.2</span>;
+  <span class="token-prop">font-weight</span>: <span class="token-value">700</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* :where() — zero specificity */</span>
+<span class="token-selector">:where(.reset) a</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">inherit</span>;
+  <span class="token-prop">text-decoration</span>: <span class="token-value">none</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* :has() — the parent selector! */</span>
+<span class="token-selector">.card:has(img)</span> <span class="token-brace">{</span>
+  <span class="token-prop">grid-template-rows</span>: <span class="token-value">auto 1fr</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Style form when input is invalid */</span>
+<span class="token-selector">form:has(:invalid)</span> <span class="token-brace">{</span>
+  <span class="token-prop">border-color</span>: <span class="token-value">var(--color-danger)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Next sibling of checked input */</span>
+<span class="token-selector">input:checked + label</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-weight</span>: <span class="token-value">bold</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: CONTAINER QUERIES -->
+  <section class="slide slide--dark" id="container">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Syntax 4</span>
+        <h2 class="slide__title">Container Queries</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Respond to a component's size, not the viewport.</p>
+          <div class="comparison">
+            <div class="comparison__item comparison__item--old">
+              <span class="comparison__label">Media query</span>
+              <p>Responds to <strong>viewport</strong> width</p>
+            </div>
+            <div class="comparison__arrow">vs</div>
+            <div class="comparison__item comparison__item--new">
+              <span class="comparison__label">Container query</span>
+              <p>Responds to <strong>parent</strong> width</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">How it works:</h3>
+          <ul class="list list--neutral">
+            <li>Define a containment context with <code class="inline-code">container-type</code></li>
+            <li>Query it with <code class="inline-code">@container</code></li>
+            <li>Name containers for targeted queries</li>
+            <li>Components adapt to where they're placed</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">container.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* 1. Define the container */</span>
+<span class="token-selector">.sidebar</span> <span class="token-brace">{</span>
+  <span class="token-prop">container-type</span>: <span class="token-value">inline-size</span>;
+  <span class="token-prop">container-name</span>: <span class="token-value">sidebar</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* 2. Query the container */</span>
+<span class="token-keyword">@container</span> sidebar (min-width: 400px) <span class="token-brace">{</span>
+  <span class="token-selector">.card</span> <span class="token-brace">{</span>
+    <span class="token-prop">display</span>: <span class="token-value">grid</span>;
+    <span class="token-prop">grid-template-columns</span>: <span class="token-value">120px 1fr</span>;
+    <span class="token-prop">gap</span>: <span class="token-value">1rem</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span>
+
+<span class="token-keyword">@container</span> sidebar (max-width: 399px) <span class="token-brace">{</span>
+  <span class="token-selector">.card</span> <span class="token-brace">{</span>
+    <span class="token-prop">display</span>: <span class="token-value">flex</span>;
+    <span class="token-prop">flex-direction</span>: <span class="token-value">column</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: MODERN COLOR -->
+  <section class="slide slide--light" id="color">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Syntax 5</span>
+        <h2 class="slide__title">Modern Color Functions</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Perceptually uniform color spaces and built-in mixing.</p>
+          <div class="color-demo">
+            <div class="color-demo__swatch color-demo__swatch--oklch">
+              <span class="color-demo__label">oklch()</span>
+              <p>Lightness, Chroma, Hue — perceptually uniform</p>
+            </div>
+            <div class="color-demo__swatch color-demo__swatch--mix">
+              <span class="color-demo__label">color-mix()</span>
+              <p>Blend two colors in any color space</p>
+            </div>
+            <div class="color-demo__swatch color-demo__swatch--relative">
+              <span class="color-demo__label">Relative color</span>
+              <p>Derive colors from existing values</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">colors.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* oklch — perceptually uniform */</span>
+<span class="token-selector">:root</span> <span class="token-brace">{</span>
+  <span class="token-prop">--brand</span>: <span class="token-value">oklch(65% 0.25 265)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* color-mix — blend in any space */</span>
+<span class="token-selector">.btn:hover</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">color-mix(
+    in oklch,
+    var(--brand) 80%,
+    black
+  )</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Semi-transparent from any color */</span>
+<span class="token-selector">.overlay</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">color-mix(
+    in srgb,
+    var(--brand) 40%,
+    transparent
+  )</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Relative color syntax */</span>
+<span class="token-selector">.light-variant</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">oklch(from var(--brand) 85% c h)</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: LOGICAL PROPERTIES -->
+  <section class="slide slide--dark" id="logical">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Syntax 6</span>
+        <h2 class="slide__title">Logical Properties</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Write direction-aware CSS that works in any language.</p>
+          <div class="mapping-table">
+            <div class="mapping-table__row mapping-table__row--header">
+              <span>Physical</span>
+              <span>&rarr;</span>
+              <span>Logical</span>
+            </div>
+            <div class="mapping-table__row">
+              <code>margin-left</code>
+              <span>&rarr;</span>
+              <code>margin-inline-start</code>
+            </div>
+            <div class="mapping-table__row">
+              <code>margin-right</code>
+              <span>&rarr;</span>
+              <code>margin-inline-end</code>
+            </div>
+            <div class="mapping-table__row">
+              <code>padding-top</code>
+              <span>&rarr;</span>
+              <code>padding-block-start</code>
+            </div>
+            <div class="mapping-table__row">
+              <code>width</code>
+              <span>&rarr;</span>
+              <code>inline-size</code>
+            </div>
+            <div class="mapping-table__row">
+              <code>height</code>
+              <span>&rarr;</span>
+              <code>block-size</code>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Why it matters:</h3>
+          <ul class="list list--good">
+            <li>RTL support without extra code</li>
+            <li>Consistent with writing direction</li>
+            <li>Modern approach to internationalization</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">logical.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Physical — breaks in RTL */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">margin-left</span>: <span class="token-value">1rem</span>;
+  <span class="token-prop">padding-top</span>: <span class="token-value">2rem</span>;
+  <span class="token-prop">border-right</span>: <span class="token-value">2px solid blue</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Logical — works in any direction */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">margin-inline-start</span>: <span class="token-value">1rem</span>;
+  <span class="token-prop">padding-block-start</span>: <span class="token-value">2rem</span>;
+  <span class="token-prop">border-inline-end</span>: <span class="token-value">2px solid blue</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Shorthand — inline = left/right */</span>
+<span class="token-selector">.container</span> <span class="token-brace">{</span>
+  <span class="token-prop">margin-inline</span>: <span class="token-value">auto</span>;
+  <span class="token-prop">padding-inline</span>: <span class="token-value">1.5rem</span>;
+  <span class="token-prop">max-inline-size</span>: <span class="token-value">1200px</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">CSS BASICS</span>
+      <span class="footer__copy">Workshop · 2026</span>
+      <div class="footer__nav">
+        <a href="page2.html" class="footer__back">&larr; Steps to Learn</a>
+        <a href="page4.html" class="footer__back">Practices &rarr;</a>
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

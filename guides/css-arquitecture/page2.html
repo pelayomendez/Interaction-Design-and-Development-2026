@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS Organization — Principles & Structure</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">CSS Organization</span>
+    <ul class="nav__links">
+      <li><a href="#why-matters">Why</a></li>
+      <li><a href="#responsibilities">Responsibilities</a></li>
+      <li><a href="#global">Global</a></li>
+      <li><a href="#component-styles">Component</a></li>
+      <li><a href="#feature-styles">Feature</a></li>
+      <li><a href="#utilities-layer">Utilities</a></li>
+      <li><a href="#folder-structure">Structure</a></li>
+    </ul>
+    <a href="index.html" class="nav__page-link">← Techniques</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero--page2" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Part 2</span>
+      <h1 class="hero__title">Organizing CSS<br /><em>Principles &amp; Structure</em></h1>
+      <p class="hero__sub">How to separate responsibilities, keep globals lean, and build a scalable file structure.</p>
+      <a href="#why-matters" class="btn btn--primary">Start Reading →</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>reset.css</span>
+      <span>tokens.css</span>
+      <span>base.css</span>
+      <span>components/</span>
+      <span>features/</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: WHY CSS ORGANIZATION MATTERS -->
+  <section class="slide slide--dark" id="why-matters">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 1</span>
+        <h2 class="slide__title">Why CSS Organization Matters</h2>
+        <p class="slide__subtitle-text">Scaling styles without chaos</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">CSS becomes hard to manage quickly.</p>
+          <ul class="list list--bad">
+            <li>Leads to conflicts and style overrides</li>
+            <li>Dead code accumulates silently</li>
+            <li>Slows down development over time</li>
+          </ul>
+          <div class="growth-chart">
+            <div class="growth-chart__label">Without structure</div>
+            <div class="growth-chart__bars">
+              <div class="growth-chart__bar" style="--h: 20%" data-label="v1.0">
+                <span class="growth-chart__val">2kb</span>
+              </div>
+              <div class="growth-chart__bar" style="--h: 45%" data-label="v1.5">
+                <span class="growth-chart__val">8kb</span>
+              </div>
+              <div class="growth-chart__bar growth-chart__bar--warn" style="--h: 70%" data-label="v2.0">
+                <span class="growth-chart__val">24kb</span>
+              </div>
+              <div class="growth-chart__bar growth-chart__bar--danger" style="--h: 100%" data-label="v2.5">
+                <span class="growth-chart__val">80kb+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">styles.css (unorganized)</span>
+            </div>
+            <pre><code><span class="token-comment">/* 😬 Everything in one file */</span>
+
+<span class="token-selector">body</span> <span class="token-brace">{</span> <span class="token-prop">font-family</span>: <span class="token-value">sans-serif</span>; <span class="token-brace">}</span>
+<span class="token-selector">.header</span> <span class="token-brace">{</span> <span class="token-prop">background</span>: <span class="token-value">blue</span>; <span class="token-brace">}</span>
+<span class="token-selector">.btn</span> <span class="token-brace">{</span> <span class="token-prop">padding</span>: <span class="token-value">8px 16px</span>; <span class="token-brace">}</span>
+<span class="token-selector">.checkout-form</span> <span class="token-brace">{</span> <span class="token-prop">width</span>: <span class="token-value">400px</span>; <span class="token-brace">}</span>
+<span class="token-selector">.header</span> <span class="token-brace">{</span> <span class="token-prop">color</span>: <span class="token-value">white</span>; <span class="token-brace">}</span> <span class="token-comment">/* duplicate! */</span>
+<span class="token-selector">.old-sidebar</span> <span class="token-brace">{</span> <span class="token-prop">display</span>: <span class="token-value">flex</span>; <span class="token-brace">}</span> <span class="token-comment">/* dead code */</span>
+<span class="token-selector">.flex</span> <span class="token-brace">{</span> <span class="token-prop">display</span>: <span class="token-value">flex</span>; <span class="token-brace">}</span>
+<span class="token-selector">.btn</span> <span class="token-brace">{</span> <span class="token-prop">border-radius</span>: <span class="token-value">4px</span>; <span class="token-brace">}</span> <span class="token-comment">/* override */</span>
+<span class="token-comment">/* ... 3000 more lines ... */</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: SEPARATE RESPONSIBILITIES -->
+  <section class="slide slide--light" id="responsibilities">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 2</span>
+        <h2 class="slide__title">Separate Responsibilities</h2>
+        <p class="slide__subtitle-text">Not all CSS is the same</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Each category of CSS has a distinct job.</p>
+          <div class="responsibility-stack">
+            <div class="responsibility-stack__item responsibility-stack__item--global">
+              <span class="responsibility-stack__icon">🌐</span>
+              <div>
+                <strong>Global styles</strong>
+                <p>Foundations — resets, base HTML, tokens</p>
+              </div>
+            </div>
+            <div class="responsibility-stack__item responsibility-stack__item--component">
+              <span class="responsibility-stack__icon">🧩</span>
+              <div>
+                <strong>Component styles</strong>
+                <p>Local UI — scoped, reusable, isolated</p>
+              </div>
+            </div>
+            <div class="responsibility-stack__item responsibility-stack__item--feature">
+              <span class="responsibility-stack__icon">⚙️</span>
+              <div>
+                <strong>Feature styles</strong>
+                <p>Business logic — checkout, dashboard, auth</p>
+              </div>
+            </div>
+            <div class="responsibility-stack__item responsibility-stack__item--utility">
+              <span class="responsibility-stack__icon">🔧</span>
+              <div>
+                <strong>Utilities</strong>
+                <p>Helpers — spacing, visibility, layout</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">main.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* ✅ Organized by responsibility */</span>
+
+<span class="token-comment">/* 1. Foundation */</span>
+<span class="token-keyword">@import</span> <span class="token-string">'./global/reset.css'</span>;
+<span class="token-keyword">@import</span> <span class="token-string">'./global/tokens.css'</span>;
+<span class="token-keyword">@import</span> <span class="token-string">'./global/base.css'</span>;
+
+<span class="token-comment">/* 2. Components */</span>
+<span class="token-keyword">@import</span> <span class="token-string">'./components/button.css'</span>;
+<span class="token-keyword">@import</span> <span class="token-string">'./components/card.css'</span>;
+
+<span class="token-comment">/* 3. Features */</span>
+<span class="token-keyword">@import</span> <span class="token-string">'./features/checkout.css'</span>;
+
+<span class="token-comment">/* 4. Utilities */</span>
+<span class="token-keyword">@import</span> <span class="token-string">'./utils/spacing.css'</span>;</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: GLOBAL CSS -->
+  <section class="slide slide--dark" id="global">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 3</span>
+        <h2 class="slide__title">Global CSS — Keep It Small</h2>
+        <p class="slide__subtitle-text">Only for foundations</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Global styles are the foundation layer — keep them minimal.</p>
+          <ul class="list list--neutral">
+            <li>Reset / normalize browser defaults</li>
+            <li>Typography — font sizes, line-height</li>
+            <li>CSS variables (design tokens)</li>
+            <li>Base HTML element styles</li>
+          </ul>
+          <div class="file-tree">
+            <div class="file-tree__item file-tree__item--folder">📁 styles/</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent">📄 reset.css</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent">📄 base.css</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent file-tree__item--highlight">📄 tokens.css</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent">📄 globals.css</div>
+          </div>
+          <div class="badge badge--accent">🎯 Rule: if it's not truly global, it doesn't belong here</div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">reset.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Minimal, intentional reset */</span>
+<span class="token-selector">*, *::before, *::after</span> <span class="token-brace">{</span>
+  <span class="token-prop">box-sizing</span>: <span class="token-value">border-box</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">body, h1, h2, h3, p, ul</span> <span class="token-brace">{</span>
+  <span class="token-prop">margin</span>: <span class="token-value">0</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">0</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">ul</span> <span class="token-brace">{</span>
+  <span class="token-prop">list-style</span>: <span class="token-value">none</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">img, video</span> <span class="token-brace">{</span>
+  <span class="token-prop">max-width</span>: <span class="token-value">100%</span>;
+  <span class="token-prop">display</span>: <span class="token-value">block</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">base.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Base HTML elements only */</span>
+<span class="token-selector">body</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-family</span>: <span class="token-value">var(--font-sans)</span>;
+  <span class="token-prop">font-size</span>: <span class="token-value">var(--text-base)</span>;
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-text)</span>;
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-bg)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">a</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-primary)</span>;
+  <span class="token-prop">text-decoration</span>: <span class="token-value">underline</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: COMPONENT STYLES -->
+  <section class="slide slide--light" id="component-styles">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 4</span>
+        <h2 class="slide__title">Component Styles</h2>
+        <p class="slide__subtitle-text">Local, scoped, reusable</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Components own their own styles — nothing more.</p>
+          <ul class="list list--good">
+            <li>Scoped to the component boundary</li>
+            <li>No side effects on other elements</li>
+            <li>Portable — move the folder, keep the styles</li>
+            <li>Easy to delete without fear</li>
+          </ul>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">✅ Do</span>
+              <p>Style only the elements inside your component</p>
+            </div>
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">❌ Don't</span>
+              <p>Override parent or sibling components from within</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">Card.module.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* ✅ Scoped — only Card's internals */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">padding</span>: <span class="token-value">var(--space-6)</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-value">var(--radius-lg)</span>;
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-surface)</span>;
+  <span class="token-prop">box-shadow</span>: <span class="token-value">var(--shadow-md)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">.card__header</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">flex</span>;
+  <span class="token-prop">align-items</span>: <span class="token-value">center</span>;
+  <span class="token-prop">gap</span>: <span class="token-value">var(--space-3)</span>;
+  <span class="token-prop">margin-bottom</span>: <span class="token-value">var(--space-4)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* ❌ Don't do this in a component */</span>
+<span class="token-comment">/* .page-layout { margin: 0 auto } */</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: FEATURE STYLES -->
+  <section class="slide slide--dark" id="feature-styles">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 5</span>
+        <h2 class="slide__title">Feature Styles</h2>
+        <p class="slide__subtitle-text">Business logic lives here</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Feature styles handle specific page areas or user flows.</p>
+          <ul class="list list--neutral">
+            <li>Checkout flow, dashboard, auth pages</li>
+            <li>Can compose multiple components</li>
+            <li>Usually tied to a route or feature flag</li>
+            <li>Not reused across the app</li>
+          </ul>
+          <div class="file-tree">
+            <div class="file-tree__item file-tree__item--folder">📁 features/</div>
+            <div class="file-tree__item file-tree__item--folder file-tree__item--indent">📁 checkout/</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent file-tree__item--indent">📄 checkout.css</div>
+            <div class="file-tree__item file-tree__item--folder file-tree__item--indent">📁 dashboard/</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent file-tree__item--indent">📄 dashboard.css</div>
+            <div class="file-tree__item file-tree__item--folder file-tree__item--indent">📁 auth/</div>
+            <div class="file-tree__item file-tree__item--file file-tree__item--indent file-tree__item--indent">📄 auth.css</div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">checkout.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Feature-specific layout */</span>
+<span class="token-selector">.checkout-layout</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">grid</span>;
+  <span class="token-prop">grid-template-columns</span>: <span class="token-value">1fr 380px</span>;
+  <span class="token-prop">gap</span>: <span class="token-value">var(--space-8)</span>;
+  <span class="token-prop">max-width</span>: <span class="token-value">960px</span>;
+  <span class="token-prop">margin</span>: <span class="token-value">0 auto</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">.checkout-summary</span> <span class="token-brace">{</span>
+  <span class="token-prop">position</span>: <span class="token-value">sticky</span>;
+  <span class="token-prop">top</span>: <span class="token-value">var(--space-8)</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">var(--space-6)</span>;
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-surface)</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-value">var(--radius-xl)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Uses Card component internally */</span>
+<span class="token-selector">.checkout-summary .card</span> <span class="token-brace">{</span>
+  <span class="token-prop">border</span>: <span class="token-value">none</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: UTILITIES -->
+  <section class="slide slide--light" id="utilities-layer">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 6</span>
+        <h2 class="slide__title">Utilities — Helpers Only</h2>
+        <p class="slide__subtitle-text">Small, single-purpose, composable</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Utilities do one thing and do it well.</p>
+          <ul class="list list--good">
+            <li>Single-purpose classes</li>
+            <li>Spacing, visibility, display</li>
+            <li>Never carry business logic</li>
+            <li>Always the highest layer priority</li>
+          </ul>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">✅ Good utility</span>
+              <p><code class="inline-code">.mt-4</code> → <code class="inline-code">margin-top: 1rem</code></p>
+            </div>
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">❌ Bad utility</span>
+              <p><code class="inline-code">.checkout-spacing</code> → too specific</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">utils/spacing.css</span>
+            </div>
+            <pre><code><span class="token-keyword">@layer</span> utilities <span class="token-brace">{</span>
+  <span class="token-comment">/* Margin top */</span>
+  <span class="token-selector">.mt-0</span> <span class="token-brace">{</span> <span class="token-prop">margin-top</span>: <span class="token-value">0</span>; <span class="token-brace">}</span>
+  <span class="token-selector">.mt-2</span> <span class="token-brace">{</span> <span class="token-prop">margin-top</span>: <span class="token-value">0.5rem</span>; <span class="token-brace">}</span>
+  <span class="token-selector">.mt-4</span> <span class="token-brace">{</span> <span class="token-prop">margin-top</span>: <span class="token-value">1rem</span>; <span class="token-brace">}</span>
+  <span class="token-selector">.mt-8</span> <span class="token-brace">{</span> <span class="token-prop">margin-top</span>: <span class="token-value">2rem</span>; <span class="token-brace">}</span>
+
+  <span class="token-comment">/* Display */</span>
+  <span class="token-selector">.flex</span>   <span class="token-brace">{</span> <span class="token-prop">display</span>: <span class="token-value">flex</span>; <span class="token-brace">}</span>
+  <span class="token-selector">.hidden</span> <span class="token-brace">{</span> <span class="token-prop">display</span>: <span class="token-value">none</span>; <span class="token-brace">}</span>
+
+  <span class="token-comment">/* Visibility */</span>
+  <span class="token-selector">.sr-only</span> <span class="token-brace">{</span>
+    <span class="token-prop">position</span>: <span class="token-value">absolute</span>;
+    <span class="token-prop">width</span>: <span class="token-value">1px</span>;
+    <span class="token-prop">clip</span>: <span class="token-value">rect(0,0,0,0)</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: FOLDER STRUCTURE -->
+  <section class="slide slide--dark" id="folder-structure">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Slide 7</span>
+        <h2 class="slide__title">Putting It All Together</h2>
+        <p class="slide__subtitle-text">A scalable folder structure</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">One folder per responsibility — easy to navigate, easy to maintain.</p>
+          <ul class="list list--good">
+            <li>New developer can find any style in seconds</li>
+            <li>Each layer is independent and replaceable</li>
+            <li>Works with any framework or bundler</li>
+            <li>Scales from side project to enterprise</li>
+          </ul>
+          <div class="badge badge--accent">🎯 Structure reflects intent</div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">project structure</span>
+            </div>
+            <pre><code><span class="token-selector">src/</span>
+<span class="token-selector">├── styles/</span>          <span class="token-comment"># global only</span>
+<span class="token-selector">│   ├── reset.css</span>
+<span class="token-selector">│   ├── tokens.css</span>
+<span class="token-selector">│   ├── base.css</span>
+<span class="token-selector">│   └── globals.css</span>
+<span class="token-selector">│</span>
+<span class="token-selector">├── components/</span>      <span class="token-comment"># reusable UI</span>
+<span class="token-selector">│   ├── Button/</span>
+<span class="token-selector">│   │   ├── Button.tsx</span>
+<span class="token-selector">│   │   └── Button.module.css</span>
+<span class="token-selector">│   └── Card/</span>
+<span class="token-selector">│       ├── Card.tsx</span>
+<span class="token-selector">│       └── Card.module.css</span>
+<span class="token-selector">│</span>
+<span class="token-selector">├── features/</span>        <span class="token-comment"># business logic</span>
+<span class="token-selector">│   ├── checkout/</span>
+<span class="token-selector">│   └── dashboard/</span>
+<span class="token-selector">│</span>
+<span class="token-selector">└── utils/</span>            <span class="token-comment"># helpers</span>
+<span class="token-selector">    ├── spacing.css</span>
+<span class="token-selector">    └── visibility.css</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">CSS Organization</span>
+      <span class="footer__copy">Workshop · 2026</span>
+      <div class="footer__nav">
+        <a href="index.html" class="footer__back">← Techniques</a>
+        <a href="#top" class="footer__back">↑ Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

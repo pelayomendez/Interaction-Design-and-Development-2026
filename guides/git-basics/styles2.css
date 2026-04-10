@@ -1,0 +1,298 @@
+/* ===================================================
+   styles2.css — additional components for Git Basics
+   =================================================== */
+
+/* --- FOOTER MULTI-LINK ------------------------------------- */
+.footer__nav {
+  display: flex;
+  gap: var(--space-6);
+}
+
+/* --- SETUP GRID (Setup slide) ------------------------------ */
+.setup-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.setup-grid__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.setup-grid__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.setup-grid__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.setup-grid__item--install {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.setup-grid__item--install .setup-grid__code { color: var(--color-primary); }
+
+.setup-grid__item--config {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.setup-grid__item--config .setup-grid__code { color: var(--color-accent); }
+
+.setup-grid__item--init {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.setup-grid__item--init .setup-grid__code { color: var(--color-good); }
+
+/* --- FLOW STEPS (Basic Workflow slide) --------------------- */
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.flow-steps__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: var(--radius-lg);
+}
+
+.flow-steps__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(245,158,11,0.15);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.flow-steps__item strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.flow-steps__item p {
+  font-size: var(--text-sm);
+  opacity: 0.6;
+  line-height: 1.4;
+}
+
+/* --- BRANCH COMPARE (Branches slide) ---------------------- */
+.branch-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.branch-compare__col {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.branch-compare__col p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-bottom: var(--space-3);
+  line-height: 1.5;
+}
+
+.branch-compare__title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.branch-compare__col--main {
+  background: rgba(245,158,11,0.06);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.branch-compare__col--main .branch-compare__title { color: #fbbf24; }
+
+.branch-compare__col--feature {
+  background: rgba(99,102,241,0.06);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.branch-compare__col--feature .branch-compare__title { color: #a5b4fc; }
+
+/* --- REMOTE GRID (Remote slide) ---------------------------- */
+.remote-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.remote-grid__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.remote-grid__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.remote-grid__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.remote-grid__item--push {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.remote-grid__item--push .remote-grid__code { color: var(--color-good); }
+
+.remote-grid__item--pull {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.remote-grid__item--pull .remote-grid__code { color: var(--color-primary); }
+
+.remote-grid__item--fetch {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.remote-grid__item--fetch .remote-grid__code { color: var(--color-accent); }
+
+/* --- UNDO STEPS (History & Undo slide) --------------------- */
+.undo-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.undo-steps__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(0,0,0,0.02);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.undo-steps__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(245,158,11,0.15);
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.undo-steps__item strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.undo-steps__item p {
+  font-size: var(--text-sm);
+  opacity: 0.6;
+  line-height: 1.4;
+}
+
+/* --- PRACTICE COMPARE (Workflow slide) --------------------- */
+.practice-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.practice-compare__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.practice-compare__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.practice-compare__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.practice-compare__item--message {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.practice-compare__item--message .practice-compare__code { color: var(--color-accent); }
+
+.practice-compare__item--branch {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.practice-compare__item--branch .practice-compare__code { color: var(--color-primary); }
+
+.practice-compare__item--gitignore {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.practice-compare__item--gitignore .practice-compare__code { color: var(--color-good); }
+
+/* --- RESPONSIVE -------------------------------------------- */
+@media (max-width: 900px) {
+  .branch-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__nav { flex-direction: column; gap: var(--space-3); }
+}

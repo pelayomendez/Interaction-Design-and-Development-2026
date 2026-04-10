@@ -1,0 +1,302 @@
+/* ===================================================
+   styles2.css — additional components for Terminal Basics
+   =================================================== */
+
+/* --- FOOTER MULTI-LINK ------------------------------------- */
+.footer__nav {
+  display: flex;
+  gap: var(--space-6);
+}
+
+/* --- CMD GRID (Navigation slide) --------------------------- */
+.cmd-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.cmd-grid__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.cmd-grid__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.cmd-grid__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.cmd-grid__item--primary {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.cmd-grid__item--primary .cmd-grid__code { color: var(--color-primary); }
+
+.cmd-grid__item--good {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.cmd-grid__item--good .cmd-grid__code { color: var(--color-good); }
+
+.cmd-grid__item--accent {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.cmd-grid__item--accent .cmd-grid__code { color: var(--color-accent); }
+
+/* --- CMD COMPARE (File Operations slide) ------------------- */
+.cmd-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.cmd-compare__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.cmd-compare__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.cmd-compare__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.cmd-compare__item--create {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.cmd-compare__item--create .cmd-compare__code { color: var(--color-good); }
+
+.cmd-compare__item--move {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.cmd-compare__item--move .cmd-compare__code { color: var(--color-primary); }
+
+.cmd-compare__item--delete {
+  background: rgba(239,68,68,0.06);
+  border-color: rgba(239,68,68,0.2);
+}
+
+.cmd-compare__item--delete .cmd-compare__code { color: #fca5a5; }
+
+/* --- DATA COMPARE (Reading Files slide) -------------------- */
+.data-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.data-compare__col {
+  padding: var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.data-compare__col p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-bottom: var(--space-3);
+  line-height: 1.5;
+}
+
+.data-compare__title {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: var(--space-2);
+}
+
+.data-compare__col--array {
+  background: rgba(99,102,241,0.06);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.data-compare__col--array .data-compare__title { color: #a5b4fc; }
+
+.data-compare__col--object {
+  background: rgba(16,185,129,0.06);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.data-compare__col--object .data-compare__title { color: #6ee7b7; }
+
+/* --- SEARCH GRID (Searching slide) ------------------------- */
+.search-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.search-grid__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.search-grid__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.search-grid__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.search-grid__item--find {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.search-grid__item--find .search-grid__code { color: var(--color-primary); }
+
+.search-grid__item--grep {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.search-grid__item--grep .search-grid__code { color: var(--color-good); }
+
+.search-grid__item--which {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.search-grid__item--which .search-grid__code { color: var(--color-accent); }
+
+/* --- PERM STEPS (Permissions slide) ------------------------ */
+.perm-steps {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+}
+
+.perm-steps__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(0,0,0,0.02);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius-lg);
+}
+
+.perm-steps__num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(16,185,129,0.15);
+  color: var(--color-good);
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.perm-steps__item strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.perm-steps__item p {
+  font-size: var(--text-sm);
+  opacity: 0.6;
+  line-height: 1.4;
+}
+
+/* --- PIPE COMPARE (Pipes & Redirects slide) ---------------- */
+.pipe-compare {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-4);
+}
+
+.pipe-compare__item {
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-lg);
+  border: 1px solid transparent;
+}
+
+.pipe-compare__item p {
+  font-size: var(--text-sm);
+  opacity: 0.75;
+  margin-top: var(--space-1);
+  line-height: 1.5;
+}
+
+.pipe-compare__code {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  font-weight: 700;
+}
+
+.pipe-compare__item--pipe {
+  background: rgba(16,185,129,0.08);
+  border-color: rgba(16,185,129,0.2);
+}
+
+.pipe-compare__item--pipe .pipe-compare__code { color: var(--color-good); }
+
+.pipe-compare__item--write {
+  background: rgba(99,102,241,0.08);
+  border-color: rgba(99,102,241,0.2);
+}
+
+.pipe-compare__item--write .pipe-compare__code { color: var(--color-primary); }
+
+.pipe-compare__item--append {
+  background: rgba(245,158,11,0.08);
+  border-color: rgba(245,158,11,0.2);
+}
+
+.pipe-compare__item--append .pipe-compare__code { color: var(--color-accent); }
+
+/* --- RESPONSIVE -------------------------------------------- */
+@media (max-width: 900px) {
+  .data-compare {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer__nav { flex-direction: column; gap: var(--space-3); }
+}

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS BASICS — Good Writing Practices</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">CSS BASICS</span>
+    <ul class="nav__links">
+      <li><a href="#naming">Naming</a></li>
+      <li><a href="#specificity">Specificity</a></li>
+      <li><a href="#dry">DRY</a></li>
+      <li><a href="#mobile-first">Mobile</a></li>
+      <li><a href="#shorthand">Shorthand</a></li>
+      <li><a href="#comments">Comments</a></li>
+      <li><a href="#formatting">Format</a></li>
+    </ul>
+    <div class="nav__page-links">
+      <a href="page3.html" class="nav__page-link">&larr; Modern CSS</a>
+      <a href="index.html" class="nav__page-link">Home</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero--page4" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Part 4</span>
+      <h1 class="hero__title">Good CSS<br /><em>Writing Practices</em></h1>
+      <p class="hero__sub">Write CSS that your future self (and your team) will thank you for.</p>
+      <a href="#naming" class="btn btn--primary">Start Reading &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>.card__title--active</span>
+      <span>/* Keep specificity low */</span>
+      <span>var(--spacing-md)</span>
+      <span>@media (min-width: ...)</span>
+      <span>margin-inline: auto</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: MEANINGFUL NAMES -->
+  <section class="slide slide--dark" id="naming">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 1</span>
+        <h2 class="slide__title">Use Meaningful Class Names</h2>
+        <p class="slide__subtitle-text">Your CSS should describe what, not how</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Good names make CSS self-documenting.</p>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">Bad names</span>
+              <ul class="list list--bad">
+                <li><code class="inline-code">.red-text</code> — tied to appearance</li>
+                <li><code class="inline-code">.div1</code> — meaningless</li>
+                <li><code class="inline-code">.left-bar</code> — tied to position</li>
+                <li><code class="inline-code">.big</code> — vague</li>
+              </ul>
+            </div>
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">Good names</span>
+              <ul class="list list--good">
+                <li><code class="inline-code">.alert--danger</code> — describes role</li>
+                <li><code class="inline-code">.card__header</code> — describes structure</li>
+                <li><code class="inline-code">.sidebar</code> — describes purpose</li>
+                <li><code class="inline-code">.text-lg</code> — clear utility</li>
+              </ul>
+            </div>
+          </div>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>Ask yourself: <strong>"Will this name make sense in 6 months?"</strong></p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">naming.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Bad — what happens if it's not red? */</span>
+<span class="token-selector">.red-text</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">red</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — describes the role */</span>
+<span class="token-selector">.alert--danger</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-danger)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Bad — tied to layout position */</span>
+<span class="token-selector">.left-bar</span> <span class="token-brace">{</span>
+  <span class="token-prop">width</span>: <span class="token-value">250px</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — describes what it is */</span>
+<span class="token-selector">.sidebar</span> <span class="token-brace">{</span>
+  <span class="token-prop">inline-size</span>: <span class="token-value">250px</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* BEM naming pattern */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span> <span class="token-comment">/* block */</span> <span class="token-brace">}</span>
+<span class="token-selector">.card__title</span> <span class="token-brace">{</span> <span class="token-comment">/* element */</span> <span class="token-brace">}</span>
+<span class="token-selector">.card__title--highlighted</span> <span class="token-brace">{</span> <span class="token-comment">/* modifier */</span> <span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: LOW SPECIFICITY -->
+  <section class="slide slide--light" id="specificity">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 2</span>
+        <h2 class="slide__title">Keep Specificity Low</h2>
+        <p class="slide__subtitle-text">Flat selectors are easier to override</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">High specificity creates a cascade of overrides. Keep it flat.</p>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">Avoid</span>
+              <ul class="list list--bad">
+                <li>Deeply nested selectors</li>
+                <li>IDs for styling</li>
+                <li><code class="inline-code">!important</code> as a habit</li>
+                <li>Qualifying classes with elements</li>
+              </ul>
+            </div>
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">Prefer</span>
+              <ul class="list list--good">
+                <li>Single class selectors</li>
+                <li>BEM-style flat naming</li>
+                <li><code class="inline-code">@layer</code> for cascade control</li>
+                <li><code class="inline-code">:where()</code> for zero-specificity resets</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">specificity.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Bad — too specific (0-3-1) */</span>
+<span class="token-selector">div.page .sidebar .nav-list .item</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">blue</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — flat and predictable (0-1-0) */</span>
+<span class="token-selector">.nav-item</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">blue</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Bad — hard to override later */</span>
+<span class="token-selector">#header .logo</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-size</span>: <span class="token-value">2rem</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — easy to override */</span>
+<span class="token-selector">.header__logo</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-size</span>: <span class="token-value">2rem</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Use :where() for zero-specificity */</span>
+<span class="token-selector">:where(.reset) a</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">inherit</span>; <span class="token-comment">/* easy to override */</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: DRY -->
+  <section class="slide slide--dark" id="dry">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 3</span>
+        <h2 class="slide__title">DRY — Don't Repeat Yourself</h2>
+        <p class="slide__subtitle-text">Use variables and shared classes</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Repetition makes CSS fragile. Centralize shared values.</p>
+          <h3 class="slide__subtitle">Strategies:</h3>
+          <ul class="list list--good">
+            <li>Design tokens via custom properties</li>
+            <li>Shared component classes</li>
+            <li>Utility classes for common patterns</li>
+            <li>Consistent spacing scale</li>
+          </ul>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>If you change a color in 12 places, you'll miss one. Change it in <strong>one variable</strong> instead.</p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">dry.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Bad — repeated values */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">border-radius</span>: <span class="token-value">8px</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">16px</span>;
+  <span class="token-prop">color</span>: <span class="token-value">#6366f1</span>;
+<span class="token-brace">}</span>
+<span class="token-selector">.modal</span> <span class="token-brace">{</span>
+  <span class="token-prop">border-radius</span>: <span class="token-value">8px</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">16px</span>;
+  <span class="token-prop">color</span>: <span class="token-value">#6366f1</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — centralized tokens */</span>
+<span class="token-selector">:root</span> <span class="token-brace">{</span>
+  <span class="token-prop">--radius</span>: <span class="token-value">0.5rem</span>;
+  <span class="token-prop">--spacing</span>: <span class="token-value">1rem</span>;
+  <span class="token-prop">--color-primary</span>: <span class="token-value">#6366f1</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">.card, .modal</span> <span class="token-brace">{</span>
+  <span class="token-prop">border-radius</span>: <span class="token-value">var(--radius)</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">var(--spacing)</span>;
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-primary)</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: MOBILE FIRST -->
+  <section class="slide slide--light" id="mobile-first">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 4</span>
+        <h2 class="slide__title">Write Mobile-First CSS</h2>
+        <p class="slide__subtitle-text">Start small, enhance upward</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Base styles for mobile. Media queries add complexity for larger screens.</p>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">Desktop-first</span>
+              <p>Start wide, then <code class="inline-code">max-width</code> to remove features — messy overrides.</p>
+            </div>
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">Mobile-first</span>
+              <p>Start simple, then <code class="inline-code">min-width</code> to add features — clean additions.</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Benefits:</h3>
+          <ul class="list list--good">
+            <li>Less CSS overall — base is the simplest layout</li>
+            <li>Media queries only add, never remove</li>
+            <li>Better performance on mobile devices</li>
+            <li>Forces you to prioritize content</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">mobile-first.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Base — mobile (no media query) */</span>
+<span class="token-selector">.grid</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">flex</span>;
+  <span class="token-prop">flex-direction</span>: <span class="token-value">column</span>;
+  <span class="token-prop">gap</span>: <span class="token-value">1rem</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Tablet — add columns */</span>
+<span class="token-keyword">@media</span> (min-width: 640px) <span class="token-brace">{</span>
+  <span class="token-selector">.grid</span> <span class="token-brace">{</span>
+    <span class="token-prop">flex-direction</span>: <span class="token-value">row</span>;
+    <span class="token-prop">flex-wrap</span>: <span class="token-value">wrap</span>;
+  <span class="token-brace">}</span>
+
+  <span class="token-selector">.grid__item</span> <span class="token-brace">{</span>
+    <span class="token-prop">flex</span>: <span class="token-value">1 1 calc(50% - 0.5rem)</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Desktop — full grid */</span>
+<span class="token-keyword">@media</span> (min-width: 1024px) <span class="token-brace">{</span>
+  <span class="token-selector">.grid</span> <span class="token-brace">{</span>
+    <span class="token-prop">display</span>: <span class="token-value">grid</span>;
+    <span class="token-prop">grid-template-columns</span>: <span class="token-value">repeat(3, 1fr)</span>;
+    <span class="token-prop">gap</span>: <span class="token-value">1.5rem</span>;
+  <span class="token-brace">}</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: SHORTHAND -->
+  <section class="slide slide--dark" id="shorthand">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 5</span>
+        <h2 class="slide__title">Use Shorthand Wisely</h2>
+        <p class="slide__subtitle-text">Shorthand saves lines but can reset values silently</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Shorthand properties are powerful — but use them with intention.</p>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">Use shorthand when</span>
+              <ul class="list list--good">
+                <li>You're setting all values at once</li>
+                <li>You're starting fresh (resets, base)</li>
+                <li>The values are related</li>
+              </ul>
+            </div>
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">Avoid shorthand when</span>
+              <ul class="list list--bad">
+                <li>You only want to change one side</li>
+                <li>You'd accidentally reset other values</li>
+                <li>It makes the intent unclear</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">shorthand.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Good shorthand — all values set */</span>
+<span class="token-selector">.box</span> <span class="token-brace">{</span>
+  <span class="token-prop">margin</span>: <span class="token-value">1rem 2rem</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">1rem</span>;
+  <span class="token-prop">border</span>: <span class="token-value">1px solid gray</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Careful! background shorthand resets */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">background-image</span>: <span class="token-value">url(bg.png)</span>;
+  <span class="token-prop">background</span>: <span class="token-value">red</span>; <span class="token-comment">/* resets image! */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Better — be explicit */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">background-image</span>: <span class="token-value">url(bg.png)</span>;
+  <span class="token-prop">background-color</span>: <span class="token-value">red</span>; <span class="token-comment">/* no reset */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Only changing one side? Be specific */</span>
+<span class="token-selector">.section</span> <span class="token-brace">{</span>
+  <span class="token-prop">margin-block-start</span>: <span class="token-value">2rem</span>; <span class="token-comment">/* not margin */</span>
+  <span class="token-prop">padding-inline</span>: <span class="token-value">1.5rem</span>;   <span class="token-comment">/* left+right */</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: COMMENTS -->
+  <section class="slide slide--light" id="comments">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 6</span>
+        <h2 class="slide__title">Comment Strategically</h2>
+        <p class="slide__subtitle-text">Explain why, not what</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Comments should add context that the code itself can't express.</p>
+          <div class="do-dont">
+            <div class="do-dont__col do-dont__col--dont">
+              <span class="do-dont__label">Useless comments</span>
+              <ul class="list list--bad">
+                <li><code class="inline-code">/* set color */</code> — obvious</li>
+                <li><code class="inline-code">/* padding */</code> — we can see that</li>
+                <li>Commented-out old code</li>
+              </ul>
+            </div>
+            <div class="do-dont__col do-dont__col--do">
+              <span class="do-dont__label">Useful comments</span>
+              <ul class="list list--good">
+                <li>Section headers for navigation</li>
+                <li>Explaining browser workarounds</li>
+                <li>Non-obvious magic numbers</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">comments.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Bad — says what the code already says */</span>
+<span class="token-selector">.title</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">red</span>; <span class="token-comment">/* make it red */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — explains WHY */</span>
+<span class="token-selector">.title</span> <span class="token-brace">{</span>
+  <span class="token-comment">/* Match brand danger color from Figma */</span>
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-danger)</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — section headers for scanning */</span>
+<span class="token-comment">/* ─── LAYOUT ─────────────────────── */</span>
+<span class="token-comment">/* ─── COMPONENTS ─────────────────── */</span>
+<span class="token-comment">/* ─── UTILITIES ──────────────────── */</span>
+
+<span class="token-comment">/* Good — explains a workaround */</span>
+<span class="token-selector">.modal</span> <span class="token-brace">{</span>
+  <span class="token-comment">/* 64px = fixed header height.
+     Keeps modal below the header
+     on all viewport sizes. */</span>
+  <span class="token-prop">top</span>: <span class="token-value">64px</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — explains browser fix */</span>
+<span class="token-selector">.scroll-container</span> <span class="token-brace">{</span>
+  <span class="token-comment">/* Safari needs this for smooth
+     scroll inside overflow containers */</span>
+  <span class="token-prop">-webkit-overflow-scrolling</span>: <span class="token-value">touch</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: FORMATTING -->
+  <section class="slide slide--dark" id="formatting">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Practice 7</span>
+        <h2 class="slide__title">Consistent Formatting</h2>
+        <p class="slide__subtitle-text">Pick a style and stick to it</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Consistent code is readable code — automate formatting when possible.</p>
+          <h3 class="slide__subtitle">Formatting rules:</h3>
+          <ul class="list list--good">
+            <li>One property per line</li>
+            <li>Consistent indentation (2 or 4 spaces)</li>
+            <li>Opening brace on the same line as selector</li>
+            <li>Space after colon, before value</li>
+            <li>Semicolon on every declaration</li>
+            <li>Blank line between rule sets</li>
+          </ul>
+          <h3 class="slide__subtitle">Property order:</h3>
+          <div class="order-list">
+            <div class="order-list__item">
+              <span class="order-list__num">1</span>
+              <span>Layout — <code class="inline-code">display</code>, <code class="inline-code">position</code>, <code class="inline-code">grid</code></span>
+            </div>
+            <div class="order-list__item">
+              <span class="order-list__num">2</span>
+              <span>Box model — <code class="inline-code">margin</code>, <code class="inline-code">padding</code>, <code class="inline-code">border</code></span>
+            </div>
+            <div class="order-list__item">
+              <span class="order-list__num">3</span>
+              <span>Typography — <code class="inline-code">font</code>, <code class="inline-code">color</code>, <code class="inline-code">text</code></span>
+            </div>
+            <div class="order-list__item">
+              <span class="order-list__num">4</span>
+              <span>Visual — <code class="inline-code">background</code>, <code class="inline-code">shadow</code>, <code class="inline-code">opacity</code></span>
+            </div>
+            <div class="order-list__item">
+              <span class="order-list__num">5</span>
+              <span>Animation — <code class="inline-code">transition</code>, <code class="inline-code">animation</code></span>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">formatting.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Bad — inconsistent formatting */</span>
+<span class="token-selector">.card</span><span class="token-brace">{</span>
+<span class="token-prop">display</span>:<span class="token-value">flex</span>;
+  <span class="token-prop">  padding</span>: <span class="token-value">1rem</span>;
+<span class="token-prop">background</span>: <span class="token-value">white</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Good — clean and consistent */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-comment">/* Layout */</span>
+  <span class="token-prop">display</span>: <span class="token-value">flex</span>;
+  <span class="token-prop">flex-direction</span>: <span class="token-value">column</span>;
+  <span class="token-prop">gap</span>: <span class="token-value">var(--space-4)</span>;
+
+  <span class="token-comment">/* Box model */</span>
+  <span class="token-prop">padding</span>: <span class="token-value">var(--space-6)</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-value">var(--radius-lg)</span>;
+
+  <span class="token-comment">/* Typography */</span>
+  <span class="token-prop">font-size</span>: <span class="token-value">var(--text-base)</span>;
+  <span class="token-prop">color</span>: <span class="token-value">var(--color-text)</span>;
+
+  <span class="token-comment">/* Visual */</span>
+  <span class="token-prop">background</span>: <span class="token-value">var(--color-surface)</span>;
+  <span class="token-prop">box-shadow</span>: <span class="token-value">var(--shadow-md)</span>;
+
+  <span class="token-comment">/* Animation */</span>
+  <span class="token-prop">transition</span>: <span class="token-value">transform 150ms ease</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">CSS BASICS</span>
+      <span class="footer__copy">Workshop · 2026</span>
+      <div class="footer__nav">
+        <a href="page3.html" class="footer__back">&larr; Modern CSS</a>
+        <a href="index.html" class="footer__back">Home</a>
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
