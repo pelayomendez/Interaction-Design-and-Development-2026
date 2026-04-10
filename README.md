@@ -1,4 +1,4 @@
-# Full Stack + IA Course Presentations
+# Human Interaction & AI | Elisava 2026
 
 Interactive slide deck for the Full Stack web development course with AI integration.
 
