@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS BASICS — What is CSS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">CSS BASICS</span>
+    <ul class="nav__links">
+      <li><a href="#what-is-css">What is CSS</a></li>
+      <li><a href="#syntax">Syntax</a></li>
+      <li><a href="#adding-css">Adding CSS</a></li>
+    </ul>
+    <div class="nav__page-links">
+      <a href="page2.html" class="nav__page-link">Steps &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Part 1</span>
+      <h1 class="hero__title">CSS BASICS<br /><em>Introduction</em></h1>
+      <p class="hero__sub">Learn the fundamentals of CSS — what it is, how it works, and how to add it to your HTML.</p>
+      <a href="#what-is-css" class="btn btn--primary">Get Started &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>color: blue</span>
+      <span>selector { property: value }</span>
+      <span>&lt;link rel="stylesheet"&gt;</span>
+      <span>font-size: 1.5rem</span>
+      <span>&lt;style&gt; ... &lt;/style&gt;</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: WHAT IS CSS -->
+  <section class="slide slide--dark" id="what-is-css">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 1</span>
+        <h2 class="slide__title">What is CSS?</h2>
+        <p class="slide__subtitle-text">Cascading Style Sheets — the language of visual design on the web</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">CSS controls how HTML elements look in the browser.</p>
+          <h3 class="slide__subtitle">CSS lets you control:</h3>
+          <ul class="list list--good">
+            <li>Colors, fonts, and text styling</li>
+            <li>Spacing, sizing, and layout</li>
+            <li>Animations and transitions</li>
+            <li>Responsive design for different screen sizes</li>
+          </ul>
+          <h3 class="slide__subtitle">Why it matters:</h3>
+          <ul class="list list--neutral">
+            <li>Separates content (HTML) from presentation (CSS)</li>
+            <li>One stylesheet can style an entire website</li>
+            <li>Change the look without touching the HTML</li>
+            <li>Without CSS, browsers apply basic default styles</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">style.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* CSS makes HTML look good */</span>
+<span class="token-selector">body</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-family</span>: <span class="token-value">sans-serif</span>;
+  <span class="token-prop">background</span>: <span class="token-value">#f8f9fc</span>;
+  <span class="token-prop">color</span>: <span class="token-value">#111827</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">h1</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-size</span>: <span class="token-value">2.5rem</span>;
+  <span class="token-prop">font-weight</span>: <span class="token-value">800</span>;
+  <span class="token-prop">color</span>: <span class="token-value">#6366f1</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">p</span> <span class="token-brace">{</span>
+  <span class="token-prop">line-height</span>: <span class="token-value">1.6</span>;
+  <span class="token-prop">max-width</span>: <span class="token-value">65ch</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">a</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">#6366f1</span>;
+  <span class="token-prop">text-decoration</span>: <span class="token-value">underline</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: CSS SYNTAX -->
+  <section class="slide slide--light" id="syntax">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 2</span>
+        <h2 class="slide__title">CSS Syntax — Rules, Selectors, Properties</h2>
+        <p class="slide__subtitle-text">Every CSS style follows the same pattern</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">A CSS rule has a selector and a declaration block.</p>
+          <div class="anatomy">
+            <div class="anatomy__row">
+              <span class="anatomy__part anatomy__part--declaration">selector</span>
+              <span class="anatomy__sep">{</span>
+              <span class="anatomy__part anatomy__part--value">property: value;</span>
+              <span class="anatomy__sep">}</span>
+            </div>
+            <div class="anatomy__labels">
+              <span class="anatomy__label">Targets elements</span>
+              <span class="anatomy__label anatomy__label--offset">Declaration</span>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">The parts:</h3>
+          <ul class="list list--neutral">
+            <li><strong>Selector</strong> — targets which HTML elements to style</li>
+            <li><strong>Property</strong> — what aspect to change (color, size, spacing...)</li>
+            <li><strong>Value</strong> — the new setting for that property</li>
+            <li><strong>Declaration</strong> — a property + value pair, ends with <code class="inline-code">;</code></li>
+          </ul>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>A rule can have <strong>multiple declarations</strong> inside the curly braces — one per line.</p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">rule.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Element selector — targets all &lt;h1&gt; tags */</span>
+<span class="token-selector">h1</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">blue</span>;
+  <span class="token-prop">font-size</span>: <span class="token-value">2rem</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Class selector — targets class="card" */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">white</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">1.5rem</span>;
+  <span class="token-prop">border-radius</span>: <span class="token-value">8px</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* ID selector — targets id="header" */</span>
+<span class="token-selector">#header</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">navy</span>;
+  <span class="token-prop">color</span>: <span class="token-value">white</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Multiple selectors at once */</span>
+<span class="token-selector">h1, h2, h3</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-weight</span>: <span class="token-value">700</span>;
+  <span class="token-prop">line-height</span>: <span class="token-value">1.2</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: ADDING CSS -->
+  <section class="slide slide--dark" id="adding-css">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 3</span>
+        <h2 class="slide__title">Three Ways to Add CSS</h2>
+        <p class="slide__subtitle-text">External, internal, or inline — choose wisely</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">There are three ways to connect CSS to your HTML.</p>
+          <div class="cascade-order">
+            <div class="cascade-order__item">
+              <span class="cascade-order__num">1</span>
+              <div>
+                <strong>External stylesheet (recommended)</strong>
+                <p>Separate <code class="inline-code">.css</code> file linked with <code class="inline-code">&lt;link&gt;</code>. Best for real projects.</p>
+              </div>
+            </div>
+            <div class="cascade-order__item">
+              <span class="cascade-order__num">2</span>
+              <div>
+                <strong>Internal stylesheet</strong>
+                <p><code class="inline-code">&lt;style&gt;</code> tag in the HTML <code class="inline-code">&lt;head&gt;</code>. OK for small demos.</p>
+              </div>
+            </div>
+            <div class="cascade-order__item">
+              <span class="cascade-order__num">3</span>
+              <div>
+                <strong>Inline styles (avoid)</strong>
+                <p><code class="inline-code">style=""</code> attribute on an element. Hard to maintain.</p>
+              </div>
+            </div>
+          </div>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>Always prefer <strong>external stylesheets</strong> — they keep your HTML clean and can be reused across pages.</p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">external.html</span>
+            </div>
+            <pre><code><span class="token-comment">&lt;!-- 1. External — best practice --&gt;</span>
+<span class="token-tag">&lt;head&gt;</span>
+  <span class="token-tag">&lt;link</span> <span class="token-attr">rel</span>=<span class="token-string">"stylesheet"</span>
+        <span class="token-attr">href</span>=<span class="token-string">"styles.css"</span><span class="token-tag">&gt;</span>
+<span class="token-tag">&lt;/head&gt;</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">internal-and-inline.html</span>
+            </div>
+            <pre><code><span class="token-comment">&lt;!-- 2. Internal — in the &lt;head&gt; --&gt;</span>
+<span class="token-tag">&lt;style&gt;</span>
+  <span class="token-selector">h1</span> <span class="token-brace">{</span>
+    <span class="token-prop">color</span>: <span class="token-value">blue</span>;
+  <span class="token-brace">}</span>
+<span class="token-tag">&lt;/style&gt;</span>
+
+<span class="token-comment">&lt;!-- 3. Inline — avoid this --&gt;</span>
+<span class="token-tag">&lt;h1</span> <span class="token-attr">style</span>=<span class="token-string">"color: blue"</span><span class="token-tag">&gt;</span>
+  Hello
+<span class="token-tag">&lt;/h1&gt;</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">CSS BASICS</span>
+      <span class="footer__copy">Workshop · 2026</span>
+      <div class="footer__nav">
+        <a href="page2.html" class="footer__back">Steps to Learn &rarr;</a>
+        <a href="page3.html" class="footer__back">Modern Syntax &rarr;</a>
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

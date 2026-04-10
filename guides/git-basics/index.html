@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read Git — Git Basics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">Read Git</span>
+    <ul class="nav__links">
+      <li><a href="#why">Why</a></li>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#basics">Basics</a></li>
+      <li><a href="#branches">Branches</a></li>
+      <li><a href="#remote">Remote</a></li>
+      <li><a href="#history">History</a></li>
+      <li><a href="#workflow">Workflow</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Workshop</span>
+      <h1 class="hero__title">Read Git<br /><em>Git Basics</em></h1>
+      <p class="hero__sub">A practical guide to version control &mdash; track changes, collaborate, and never lose your work.</p>
+      <a href="#why" class="btn btn--primary">Get Started &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>git commit -m "feat"</span>
+      <span>git branch feature</span>
+      <span>git merge main</span>
+      <span>git push origin main</span>
+      <span>git log --oneline</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 0: WHY GIT -->
+  <section class="slide slide--dark" id="why">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Intro</span>
+        <h2 class="slide__title">Why Learn Git?</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Git is the industry-standard version control system &mdash; it tracks every change you make to your code.</p>
+          <h3 class="slide__subtitle">Git lets you:</h3>
+          <ul class="list list--good">
+            <li>Save snapshots of your project at any point</li>
+            <li>Undo mistakes and go back to previous versions</li>
+            <li>Work on features in parallel with branches</li>
+            <li>Collaborate with others without overwriting work</li>
+          </ul>
+          <h3 class="slide__subtitle">Key concepts:</h3>
+          <ul class="list list--neutral">
+            <li><code class="inline-code">Repository</code> &mdash; a project tracked by Git</li>
+            <li><code class="inline-code">Commit</code> &mdash; a saved snapshot of your changes</li>
+            <li><code class="inline-code">Branch</code> &mdash; an independent line of development</li>
+            <li><code class="inline-code">Remote</code> &mdash; a copy of your repo on a server (GitHub)</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">terminal</span>
+            </div>
+            <pre><code><span class="token-comment"># Without Git</span>
+<span class="token-string">project-final.zip</span>
+<span class="token-string">project-final-v2.zip</span>
+<span class="token-string">project-FINAL-REAL.zip</span>
+<span class="token-string">project-FINAL-REAL-v2-fixed.zip</span>
+<span class="token-value">😱</span>
+
+<span class="token-comment"># With Git</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> log <span class="token-attr">--oneline</span>
+<span class="token-value">a3f8d2c</span> <span class="token-string">fix: responsive navbar</span>
+<span class="token-value">e7b1a09</span> <span class="token-string">feat: add contact page</span>
+<span class="token-value">c4d6f12</span> <span class="token-string">feat: add homepage layout</span>
+<span class="token-value">1a2b3c4</span> <span class="token-string">initial commit</span>
+<span class="token-prop">✓ Clean, organized, reversible</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: SETUP -->
+  <section class="slide slide--light" id="setup">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 1</span>
+        <h2 class="slide__title">Setup &amp; Configuration</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Install Git and tell it who you are &mdash; this info appears in every commit you make.</p>
+          <div class="setup-grid">
+            <div class="setup-grid__item setup-grid__item--install">
+              <code class="setup-grid__code">Install</code>
+              <p>macOS: comes pre-installed or via Xcode tools</p>
+            </div>
+            <div class="setup-grid__item setup-grid__item--config">
+              <code class="setup-grid__code">Configure</code>
+              <p>Set your name and email (once per machine)</p>
+            </div>
+            <div class="setup-grid__item setup-grid__item--init">
+              <code class="setup-grid__code">Initialize</code>
+              <p>Create a new repo or clone an existing one</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Important:</h3>
+          <ul class="list list--neutral">
+            <li>Use the same email as your GitHub account</li>
+            <li><code class="inline-code">.git/</code> folder stores all version history</li>
+            <li><code class="inline-code">.gitignore</code> tells Git which files to skip</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">setup.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Check if Git is installed</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> <span class="token-attr">--version</span>
+<span class="token-string">git version 2.44.0</span>
+
+<span class="token-comment"># Set your identity (once)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> config <span class="token-attr">--global</span> user.name <span class="token-string">"Alice Smith"</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> config <span class="token-attr">--global</span> user.email <span class="token-string">"alice@example.com"</span>
+
+<span class="token-comment"># Create a new repository</span>
+<span class="token-keyword">$</span> <span class="token-fn">mkdir</span> <span class="token-string">my-project</span>
+<span class="token-keyword">$</span> <span class="token-fn">cd</span> <span class="token-string">my-project</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> init
+<span class="token-string">Initialized empty Git repository</span>
+
+<span class="token-comment"># Or clone an existing one</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> clone <span class="token-string">https://github.com/user/repo.git</span>
+
+<span class="token-comment"># Check your config</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> config <span class="token-attr">--list</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: BASIC WORKFLOW -->
+  <section class="slide slide--dark" id="basics">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 2</span>
+        <h2 class="slide__title">The Basic Workflow</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">The core Git loop: make changes, stage them, commit them. Three areas, three steps.</p>
+          <div class="flow-steps">
+            <div class="flow-steps__item">
+              <span class="flow-steps__num">1</span>
+              <div>
+                <strong>Working Directory</strong>
+                <p>Your files as you edit them</p>
+              </div>
+            </div>
+            <div class="flow-steps__item">
+              <span class="flow-steps__num">2</span>
+              <div>
+                <strong>Staging Area</strong>
+                <p>Changes you've selected for the next commit</p>
+              </div>
+            </div>
+            <div class="flow-steps__item">
+              <span class="flow-steps__num">3</span>
+              <div>
+                <strong>Repository</strong>
+                <p>The saved history of all commits</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key commands:</h3>
+          <ul class="list list--good">
+            <li><code class="inline-code">git status</code> &mdash; see what has changed</li>
+            <li><code class="inline-code">git add</code> &mdash; stage changes</li>
+            <li><code class="inline-code">git commit</code> &mdash; save a snapshot</li>
+            <li><code class="inline-code">git diff</code> &mdash; see exact changes</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">workflow.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Check the status of your files</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> status
+<span class="token-value">modified:</span>   <span class="token-string">index.html</span>
+<span class="token-value">untracked:</span>  <span class="token-string">styles.css</span>
+
+<span class="token-comment"># Stage specific files</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> add <span class="token-string">index.html</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> add <span class="token-string">styles.css</span>
+
+<span class="token-comment"># Or stage everything</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> add <span class="token-attr">.</span>
+
+<span class="token-comment"># Commit with a message</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> commit <span class="token-attr">-m</span> <span class="token-string">"feat: add homepage layout"</span>
+
+<span class="token-comment"># See what changed (before staging)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> diff
+
+<span class="token-comment"># See what's staged (before committing)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> diff <span class="token-attr">--staged</span>
+
+<span class="token-comment"># Unstage a file</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> restore <span class="token-attr">--staged</span> <span class="token-string">styles.css</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: BRANCHES -->
+  <section class="slide slide--light" id="branches">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 3</span>
+        <h2 class="slide__title">Branches</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Branches let you work on features in isolation, then merge them back when ready.</p>
+          <div class="branch-compare">
+            <div class="branch-compare__col branch-compare__col--main">
+              <span class="branch-compare__title">main</span>
+              <p>The stable, production-ready branch</p>
+              <ul class="list list--neutral">
+                <li>Always working code</li>
+                <li>Where you merge finished features</li>
+                <li>Deploy from here</li>
+              </ul>
+            </div>
+            <div class="branch-compare__col branch-compare__col--feature">
+              <span class="branch-compare__title">feature branch</span>
+              <p>An isolated workspace for new work</p>
+              <ul class="list list--neutral">
+                <li>Safe to experiment</li>
+                <li>One branch per feature/fix</li>
+                <li>Merge or delete when done</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">branches.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># List all branches (* = current)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> branch
+<span class="token-prop">* main</span>
+<span class="token-string">  feature/navbar</span>
+
+<span class="token-comment"># Create and switch to a new branch</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> checkout <span class="token-attr">-b</span> <span class="token-string">feature/contact-page</span>
+<span class="token-comment"># or the newer way:</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> switch <span class="token-attr">-c</span> <span class="token-string">feature/contact-page</span>
+
+<span class="token-comment"># Switch between branches</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> switch <span class="token-string">main</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> switch <span class="token-string">feature/contact-page</span>
+
+<span class="token-comment"># Merge a branch into main</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> switch <span class="token-string">main</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> merge <span class="token-string">feature/contact-page</span>
+
+<span class="token-comment"># Delete a merged branch</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> branch <span class="token-attr">-d</span> <span class="token-string">feature/contact-page</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: REMOTE -->
+  <section class="slide slide--dark" id="remote">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 4</span>
+        <h2 class="slide__title">Working with Remotes</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Connect your local repo to GitHub (or GitLab) to share code and collaborate with others.</p>
+          <div class="remote-grid">
+            <div class="remote-grid__item remote-grid__item--push">
+              <code class="remote-grid__code">git push</code>
+              <p>Upload your commits to the remote server</p>
+            </div>
+            <div class="remote-grid__item remote-grid__item--pull">
+              <code class="remote-grid__code">git pull</code>
+              <p>Download and merge changes from the remote</p>
+            </div>
+            <div class="remote-grid__item remote-grid__item--fetch">
+              <code class="remote-grid__code">git fetch</code>
+              <p>Download changes without merging (safe preview)</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Remember:</h3>
+          <ul class="list list--good">
+            <li><code class="inline-code">origin</code> is the default name for your remote</li>
+            <li>Always <code class="inline-code">pull</code> before you <code class="inline-code">push</code></li>
+            <li>Use <code class="inline-code">-u</code> the first time to set upstream tracking</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">remote.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Add a remote (after git init)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> remote add <span class="token-string">origin</span> <span class="token-string">https://github.com/user/repo.git</span>
+
+<span class="token-comment"># See your remotes</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> remote <span class="token-attr">-v</span>
+<span class="token-string">origin  https://github.com/user/repo.git (push)</span>
+
+<span class="token-comment"># Push for the first time (-u sets tracking)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> push <span class="token-attr">-u</span> <span class="token-string">origin</span> <span class="token-string">main</span>
+
+<span class="token-comment"># After that, just:</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> push
+
+<span class="token-comment"># Get latest changes from the team</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> pull
+
+<span class="token-comment"># Push a feature branch</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> push <span class="token-attr">-u</span> <span class="token-string">origin</span> <span class="token-string">feature/navbar</span>
+
+<span class="token-comment"># Preview remote changes without merging</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> fetch
+<span class="token-keyword">$</span> <span class="token-fn">git</span> log <span class="token-string">origin/main</span> <span class="token-attr">--oneline</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: HISTORY & UNDO -->
+  <section class="slide slide--light" id="history">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 5</span>
+        <h2 class="slide__title">History &amp; Undo</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Explore your project's history and safely undo mistakes at any stage.</p>
+          <div class="undo-steps">
+            <div class="undo-steps__item">
+              <span class="undo-steps__num">1</span>
+              <div>
+                <strong>View history</strong>
+                <p>Browse commits with <code class="inline-code">git log</code></p>
+              </div>
+            </div>
+            <div class="undo-steps__item">
+              <span class="undo-steps__num">2</span>
+              <div>
+                <strong>Undo changes</strong>
+                <p>Discard edits with <code class="inline-code">git restore</code></p>
+              </div>
+            </div>
+            <div class="undo-steps__item">
+              <span class="undo-steps__num">3</span>
+              <div>
+                <strong>Revert commits</strong>
+                <p>Safely undo a commit with <code class="inline-code">git revert</code></p>
+              </div>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Safety first:</h3>
+          <ul class="list list--bad">
+            <li>Avoid <code class="inline-code">git reset --hard</code> unless you know what you're doing</li>
+            <li>Never rewrite history on shared branches</li>
+            <li>Use <code class="inline-code">revert</code> instead of <code class="inline-code">reset</code> on public branches</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">history.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># View commit history</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> log <span class="token-attr">--oneline</span>
+<span class="token-value">a3f8d2c</span> <span class="token-string">fix: responsive navbar</span>
+<span class="token-value">e7b1a09</span> <span class="token-string">feat: add contact page</span>
+<span class="token-value">c4d6f12</span> <span class="token-string">feat: add homepage layout</span>
+
+<span class="token-comment"># See what changed in a specific commit</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> show <span class="token-value">a3f8d2c</span>
+
+<span class="token-comment"># Discard changes in a file (not yet staged)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> restore <span class="token-string">index.html</span>
+
+<span class="token-comment"># Unstage a file (keep changes)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> restore <span class="token-attr">--staged</span> <span class="token-string">index.html</span>
+
+<span class="token-comment"># Undo the last commit (keep changes)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> reset <span class="token-attr">--soft</span> <span class="token-string">HEAD~1</span>
+
+<span class="token-comment"># Safely revert a specific commit</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> revert <span class="token-value">a3f8d2c</span>
+<span class="token-comment"># Creates a NEW commit that undoes it</span>
+
+<span class="token-comment"># See who changed each line</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> blame <span class="token-string">index.html</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: WORKFLOW & BEST PRACTICES -->
+  <section class="slide slide--dark" id="workflow">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 6</span>
+        <h2 class="slide__title">Workflow &amp; Best Practices</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">A clean workflow makes collaboration smooth. Follow these conventions from day one.</p>
+          <div class="practice-compare">
+            <div class="practice-compare__item practice-compare__item--message">
+              <code class="practice-compare__code">Commit messages</code>
+              <p>Use conventional prefixes: feat, fix, docs, style, refactor</p>
+            </div>
+            <div class="practice-compare__item practice-compare__item--branch">
+              <code class="practice-compare__code">Branch naming</code>
+              <p>Descriptive names: feature/navbar, fix/login-bug, docs/readme</p>
+            </div>
+            <div class="practice-compare__item practice-compare__item--gitignore">
+              <code class="practice-compare__code">.gitignore</code>
+              <p>Exclude node_modules, .env, build files, OS junk</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Daily workflow:</h3>
+          <ul class="list list--good">
+            <li>Pull before you start working</li>
+            <li>Create a branch for each feature or fix</li>
+            <li>Commit small and often with clear messages</li>
+            <li>Push regularly to back up your work</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">workflow.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># 1. Start your day — get latest changes</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> pull
+
+<span class="token-comment"># 2. Create a feature branch</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> switch <span class="token-attr">-c</span> <span class="token-string">feature/contact-form</span>
+
+<span class="token-comment"># 3. Work, stage, commit (repeat)</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> add <span class="token-string">src/contact.html</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> commit <span class="token-attr">-m</span> <span class="token-string">"feat: add contact form layout"</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">git</span> add <span class="token-string">src/contact.css</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> commit <span class="token-attr">-m</span> <span class="token-string">"style: add contact form styles"</span>
+
+<span class="token-comment"># 4. Push your branch</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> push <span class="token-attr">-u</span> <span class="token-string">origin</span> <span class="token-string">feature/contact-form</span>
+
+<span class="token-comment"># 5. Merge when ready</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> switch <span class="token-string">main</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> pull
+<span class="token-keyword">$</span> <span class="token-fn">git</span> merge <span class="token-string">feature/contact-form</span>
+<span class="token-keyword">$</span> <span class="token-fn">git</span> push</code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">.gitignore</span>
+            </div>
+            <pre><code><span class="token-comment"># Dependencies</span>
+<span class="token-string">node_modules/</span>
+
+<span class="token-comment"># Environment variables</span>
+<span class="token-string">.env</span>
+<span class="token-string">.env.local</span>
+
+<span class="token-comment"># Build output</span>
+<span class="token-string">dist/</span>
+<span class="token-string">build/</span>
+
+<span class="token-comment"># OS files</span>
+<span class="token-string">.DS_Store</span>
+<span class="token-string">Thumbs.db</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">Read Git</span>
+      <span class="footer__copy">Workshop &middot; 2026</span>
+      <div class="footer__nav">
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

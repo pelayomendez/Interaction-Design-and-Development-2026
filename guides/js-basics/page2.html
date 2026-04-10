@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read JS — TypeScript Basics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">Read JS</span>
+    <ul class="nav__links">
+      <li><a href="#why-ts">Why</a></li>
+      <li><a href="#basic-types">Types</a></li>
+      <li><a href="#interfaces">Interfaces</a></li>
+      <li><a href="#generics">Generics</a></li>
+      <li><a href="#narrowing">Narrowing</a></li>
+      <li><a href="#utility">Utility</a></li>
+    </ul>
+    <div class="nav__page-links">
+      <a href="index.html" class="nav__page-link">&larr; JavaScript</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero--page2" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Part 2</span>
+      <h1 class="hero__title">Read JS<br /><em>TypeScript Basics</em></h1>
+      <p class="hero__sub">Add types to your JavaScript — catch bugs at compile time, not in production.</p>
+      <a href="#why-ts" class="btn btn--primary">Start Learning &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>string | number</span>
+      <span>interface User { }</span>
+      <span>&lt;T extends Base&gt;</span>
+      <span>type State = "idle" | "loading"</span>
+      <span>Partial&lt;Config&gt;</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: WHY TYPESCRIPT -->
+  <section class="slide slide--dark" id="why-ts">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Intro</span>
+        <h2 class="slide__title">Why TypeScript?</h2>
+        <p class="slide__subtitle-text">JavaScript with a safety net</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">TypeScript is a superset of JavaScript that adds static types.</p>
+          <h3 class="slide__subtitle">Without types:</h3>
+          <ul class="list list--bad">
+            <li>Bugs hide until runtime</li>
+            <li>No autocomplete for object shapes</li>
+            <li>Refactoring is risky</li>
+            <li>APIs are documented in comments (maybe)</li>
+          </ul>
+          <h3 class="slide__subtitle">With TypeScript:</h3>
+          <ul class="list list--good">
+            <li>Errors caught as you type</li>
+            <li>Autocomplete knows every property</li>
+            <li>Rename a field, find all usages instantly</li>
+            <li>Types <em>are</em> the documentation</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">before.js</span>
+            </div>
+            <pre><code><span class="token-comment">// JavaScript — no safety</span>
+<span class="token-keyword">function</span> <span class="token-fn">getArea</span>(<span class="token-attr">shape</span>) {
+  <span class="token-keyword">return</span> shape.width * shape.height;
+}
+
+<span class="token-comment">// Oops — typo, no error until runtime</span>
+<span class="token-fn">getArea</span>({ <span class="token-prop">widht</span>: <span class="token-value">10</span>, <span class="token-prop">height</span>: <span class="token-value">5</span> });
+<span class="token-comment">// NaN (silent bug!)</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">after.ts</span>
+            </div>
+            <pre><code><span class="token-comment">// TypeScript — caught immediately</span>
+<span class="token-keyword">interface</span> <span class="token-selector">Rectangle</span> {
+  <span class="token-prop">width</span>: <span class="token-selector">number</span>;
+  <span class="token-prop">height</span>: <span class="token-selector">number</span>;
+}
+
+<span class="token-keyword">function</span> <span class="token-fn">getArea</span>(<span class="token-attr">shape</span>: <span class="token-selector">Rectangle</span>): <span class="token-selector">number</span> {
+  <span class="token-keyword">return</span> shape.width * shape.height;
+}
+
+<span class="token-comment">// Error: 'widht' does not exist</span>
+<span class="token-fn">getArea</span>({ <span class="token-prop">widht</span>: <span class="token-value">10</span>, <span class="token-prop">height</span>: <span class="token-value">5</span> });
+<span class="token-comment">//        ^^^^^ caught at compile time!</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: BASIC TYPES -->
+  <section class="slide slide--light" id="basic-types">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Types 1</span>
+        <h2 class="slide__title">Basic Types</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">TypeScript adds type annotations after variable names with a colon.</p>
+          <div class="type-grid">
+            <div class="type-grid__item type-grid__item--string">
+              <code class="type-grid__code">string</code>
+              <p>Text values</p>
+            </div>
+            <div class="type-grid__item type-grid__item--number">
+              <code class="type-grid__code">number</code>
+              <p>All numeric values</p>
+            </div>
+            <div class="type-grid__item type-grid__item--boolean">
+              <code class="type-grid__code">boolean</code>
+              <p>true or false</p>
+            </div>
+            <div class="type-grid__item type-grid__item--special">
+              <code class="type-grid__code">any / unknown</code>
+              <p>Escape hatches (use sparingly)</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key concepts:</h3>
+          <ul class="list list--neutral">
+            <li>Type inference — TS guesses types when obvious</li>
+            <li>Union types — <code class="inline-code">string | number</code></li>
+            <li>Literal types — <code class="inline-code">"success" | "error"</code></li>
+            <li>Arrays — <code class="inline-code">string[]</code> or <code class="inline-code">Array&lt;string&gt;</code></li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">types.ts</span>
+            </div>
+            <pre><code><span class="token-comment">// Primitive types</span>
+<span class="token-keyword">let</span> name: <span class="token-selector">string</span> = <span class="token-string">"Alice"</span>;
+<span class="token-keyword">let</span> age: <span class="token-selector">number</span> = <span class="token-value">28</span>;
+<span class="token-keyword">let</span> active: <span class="token-selector">boolean</span> = <span class="token-value">true</span>;
+
+<span class="token-comment">// Type inference — annotation optional</span>
+<span class="token-keyword">const</span> score = <span class="token-value">100</span>; <span class="token-comment">// inferred as number</span>
+
+<span class="token-comment">// Arrays</span>
+<span class="token-keyword">const</span> tags: <span class="token-selector">string</span>[] = [<span class="token-string">"js"</span>, <span class="token-string">"ts"</span>];
+<span class="token-keyword">const</span> ids: <span class="token-selector">Array</span>&lt;<span class="token-selector">number</span>&gt; = [<span class="token-value">1</span>, <span class="token-value">2</span>, <span class="token-value">3</span>];
+
+<span class="token-comment">// Union types</span>
+<span class="token-keyword">let</span> id: <span class="token-selector">string</span> | <span class="token-selector">number</span> = <span class="token-string">"abc"</span>;
+id = <span class="token-value">123</span>; <span class="token-comment">// also valid</span>
+
+<span class="token-comment">// Literal types</span>
+<span class="token-keyword">type</span> <span class="token-selector">Status</span> = <span class="token-string">"idle"</span> | <span class="token-string">"loading"</span> | <span class="token-string">"error"</span>;
+<span class="token-keyword">let</span> state: <span class="token-selector">Status</span> = <span class="token-string">"idle"</span>;
+
+<span class="token-comment">// Tuples</span>
+<span class="token-keyword">const</span> pair: [<span class="token-selector">string</span>, <span class="token-selector">number</span>] = [<span class="token-string">"Alice"</span>, <span class="token-value">28</span>];</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: INTERFACES & TYPE ALIASES -->
+  <section class="slide slide--dark" id="interfaces">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Types 2</span>
+        <h2 class="slide__title">Interfaces &amp; Type Aliases</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Define the shape of your data with interfaces or type aliases.</p>
+          <div class="data-compare">
+            <div class="data-compare__col data-compare__col--array">
+              <span class="data-compare__title">interface</span>
+              <p>Best for object shapes</p>
+              <ul class="list list--neutral">
+                <li>Can be extended</li>
+                <li>Can be merged</li>
+                <li>Classic OOP style</li>
+              </ul>
+            </div>
+            <div class="data-compare__col data-compare__col--object">
+              <span class="data-compare__title">type</span>
+              <p>Best for unions &amp; computed types</p>
+              <ul class="list list--neutral">
+                <li>Union &amp; intersection</li>
+                <li>Mapped types</li>
+                <li>More flexible</li>
+              </ul>
+            </div>
+          </div>
+          <div class="badge badge--accent">Use <code class="inline-code">interface</code> for objects, <code class="inline-code">type</code> for everything else</div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">interfaces.ts</span>
+            </div>
+            <pre><code><span class="token-comment">// Interface — define object shape</span>
+<span class="token-keyword">interface</span> <span class="token-selector">User</span> {
+  <span class="token-prop">id</span>: <span class="token-selector">number</span>;
+  <span class="token-prop">name</span>: <span class="token-selector">string</span>;
+  <span class="token-prop">email</span>: <span class="token-selector">string</span>;
+  <span class="token-prop">avatar</span>?: <span class="token-selector">string</span>; <span class="token-comment">// optional</span>
+}
+
+<span class="token-comment">// Extend an interface</span>
+<span class="token-keyword">interface</span> <span class="token-selector">Admin</span> <span class="token-keyword">extends</span> <span class="token-selector">User</span> {
+  <span class="token-prop">role</span>: <span class="token-string">"admin"</span>;
+  <span class="token-prop">permissions</span>: <span class="token-selector">string</span>[];
+}
+
+<span class="token-comment">// Type alias — unions, intersections</span>
+<span class="token-keyword">type</span> <span class="token-selector">ID</span> = <span class="token-selector">string</span> | <span class="token-selector">number</span>;
+<span class="token-keyword">type</span> <span class="token-selector">Theme</span> = <span class="token-string">"light"</span> | <span class="token-string">"dark"</span>;
+
+<span class="token-comment">// Intersection type</span>
+<span class="token-keyword">type</span> <span class="token-selector">Timestamped</span> = {
+  <span class="token-prop">createdAt</span>: <span class="token-selector">Date</span>;
+  <span class="token-prop">updatedAt</span>: <span class="token-selector">Date</span>;
+};
+
+<span class="token-keyword">type</span> <span class="token-selector">Post</span> = {
+  <span class="token-prop">title</span>: <span class="token-selector">string</span>;
+  <span class="token-prop">body</span>: <span class="token-selector">string</span>;
+} & <span class="token-selector">Timestamped</span>;
+
+<span class="token-comment">// Use with functions</span>
+<span class="token-keyword">function</span> <span class="token-fn">createUser</span>(<span class="token-attr">data</span>: <span class="token-selector">User</span>): <span class="token-selector">User</span> {
+  <span class="token-keyword">return</span> { ...data };
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: GENERICS -->
+  <section class="slide slide--light" id="generics">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Types 3</span>
+        <h2 class="slide__title">Generics</h2>
+        <p class="slide__subtitle-text">Write code that works with any type</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Generics let you write flexible, reusable code without losing type safety.</p>
+          <div class="transform-demo">
+            <div class="transform-demo__from">
+              <span class="transform-demo__label">Without generics</span>
+              <code>fn(x: any): any</code>
+            </div>
+            <div class="transform-demo__arrow">&rarr;</div>
+            <div class="transform-demo__to">
+              <span class="transform-demo__label">With generics</span>
+              <code>fn&lt;T&gt;(x: T): T</code>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Common uses:</h3>
+          <ul class="list list--good">
+            <li>Functions that wrap values</li>
+            <li>Data structures (lists, maps, sets)</li>
+            <li>API response wrappers</li>
+            <li>Constrained types with <code class="inline-code">extends</code></li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">generics.ts</span>
+            </div>
+            <pre><code><span class="token-comment">// Generic function</span>
+<span class="token-keyword">function</span> <span class="token-fn">first</span>&lt;<span class="token-selector">T</span>&gt;(<span class="token-attr">arr</span>: <span class="token-selector">T</span>[]): <span class="token-selector">T</span> | <span class="token-selector">undefined</span> {
+  <span class="token-keyword">return</span> arr[<span class="token-value">0</span>];
+}
+
+<span class="token-fn">first</span>([<span class="token-value">1</span>, <span class="token-value">2</span>, <span class="token-value">3</span>]);       <span class="token-comment">// number</span>
+<span class="token-fn">first</span>([<span class="token-string">"a"</span>, <span class="token-string">"b"</span>]);     <span class="token-comment">// string</span>
+
+<span class="token-comment">// Generic interface</span>
+<span class="token-keyword">interface</span> <span class="token-selector">ApiResponse</span>&lt;<span class="token-selector">T</span>&gt; {
+  <span class="token-prop">data</span>: <span class="token-selector">T</span>;
+  <span class="token-prop">status</span>: <span class="token-selector">number</span>;
+  <span class="token-prop">message</span>: <span class="token-selector">string</span>;
+}
+
+<span class="token-keyword">type</span> <span class="token-selector">UserResponse</span> = <span class="token-selector">ApiResponse</span>&lt;<span class="token-selector">User</span>&gt;;
+<span class="token-keyword">type</span> <span class="token-selector">PostResponse</span> = <span class="token-selector">ApiResponse</span>&lt;<span class="token-selector">Post</span>[]&gt;;
+
+<span class="token-comment">// Constrained generic</span>
+<span class="token-keyword">function</span> <span class="token-fn">getProperty</span>&lt;<span class="token-selector">T</span>, <span class="token-selector">K</span> <span class="token-keyword">extends</span> <span class="token-keyword">keyof</span> <span class="token-selector">T</span>&gt;(
+  <span class="token-attr">obj</span>: <span class="token-selector">T</span>,
+  <span class="token-attr">key</span>: <span class="token-selector">K</span>
+): <span class="token-selector">T</span>[<span class="token-selector">K</span>] {
+  <span class="token-keyword">return</span> obj[key];
+}
+
+<span class="token-keyword">const</span> user = { <span class="token-prop">name</span>: <span class="token-string">"Alice"</span>, <span class="token-prop">age</span>: <span class="token-value">28</span> };
+<span class="token-fn">getProperty</span>(user, <span class="token-string">"name"</span>); <span class="token-comment">// string</span>
+<span class="token-fn">getProperty</span>(user, <span class="token-string">"foo"</span>);  <span class="token-comment">// Error!</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: TYPE NARROWING -->
+  <section class="slide slide--dark" id="narrowing">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Types 4</span>
+        <h2 class="slide__title">Type Narrowing</h2>
+        <p class="slide__subtitle-text">Refine types with control flow</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">TypeScript narrows types inside conditional blocks — it knows more about your data after checks.</p>
+          <div class="narrowing-list">
+            <div class="narrowing-list__item">
+              <code class="inline-code">typeof x === "string"</code>
+              <p>Narrows to primitive types</p>
+            </div>
+            <div class="narrowing-list__item">
+              <code class="inline-code">x instanceof Date</code>
+              <p>Narrows to class instances</p>
+            </div>
+            <div class="narrowing-list__item">
+              <code class="inline-code">"key" in obj</code>
+              <p>Narrows to objects with that property</p>
+            </div>
+            <div class="narrowing-list__item">
+              <code class="inline-code">x !== null</code>
+              <p>Eliminates null/undefined</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Advanced:</h3>
+          <ul class="list list--neutral">
+            <li>Discriminated unions use a shared literal field</li>
+            <li>Custom type guards with <code class="inline-code">is</code> keyword</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">narrowing.ts</span>
+            </div>
+            <pre><code><span class="token-comment">// typeof narrowing</span>
+<span class="token-keyword">function</span> <span class="token-fn">format</span>(<span class="token-attr">val</span>: <span class="token-selector">string</span> | <span class="token-selector">number</span>): <span class="token-selector">string</span> {
+  <span class="token-keyword">if</span> (<span class="token-keyword">typeof</span> val === <span class="token-string">"string"</span>) {
+    <span class="token-keyword">return</span> val.<span class="token-fn">toUpperCase</span>(); <span class="token-comment">// string</span>
+  }
+  <span class="token-keyword">return</span> val.<span class="token-fn">toFixed</span>(<span class="token-value">2</span>);      <span class="token-comment">// number</span>
+}
+
+<span class="token-comment">// Discriminated union</span>
+<span class="token-keyword">type</span> <span class="token-selector">Shape</span> =
+  | { <span class="token-prop">kind</span>: <span class="token-string">"circle"</span>; <span class="token-prop">radius</span>: <span class="token-selector">number</span> }
+  | { <span class="token-prop">kind</span>: <span class="token-string">"rect"</span>; <span class="token-prop">w</span>: <span class="token-selector">number</span>; <span class="token-prop">h</span>: <span class="token-selector">number</span> };
+
+<span class="token-keyword">function</span> <span class="token-fn">area</span>(<span class="token-attr">s</span>: <span class="token-selector">Shape</span>): <span class="token-selector">number</span> {
+  <span class="token-keyword">switch</span> (s.kind) {
+    <span class="token-keyword">case</span> <span class="token-string">"circle"</span>:
+      <span class="token-keyword">return</span> Math.PI * s.radius ** <span class="token-value">2</span>;
+    <span class="token-keyword">case</span> <span class="token-string">"rect"</span>:
+      <span class="token-keyword">return</span> s.w * s.h;
+  }
+}
+
+<span class="token-comment">// Custom type guard</span>
+<span class="token-keyword">function</span> <span class="token-fn">isString</span>(<span class="token-attr">x</span>: <span class="token-selector">unknown</span>): x <span class="token-keyword">is</span> <span class="token-selector">string</span> {
+  <span class="token-keyword">return</span> <span class="token-keyword">typeof</span> x === <span class="token-string">"string"</span>;
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: UTILITY TYPES -->
+  <section class="slide slide--light" id="utility">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Types 5</span>
+        <h2 class="slide__title">Utility Types</h2>
+        <p class="slide__subtitle-text">Built-in type transformations</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">TypeScript ships with powerful built-in types that transform existing types.</p>
+          <div class="utility-grid">
+            <div class="utility-grid__item utility-grid__item--partial">
+              <code class="utility-grid__code">Partial&lt;T&gt;</code>
+              <p>All properties optional</p>
+            </div>
+            <div class="utility-grid__item utility-grid__item--required">
+              <code class="utility-grid__code">Required&lt;T&gt;</code>
+              <p>All properties required</p>
+            </div>
+            <div class="utility-grid__item utility-grid__item--pick">
+              <code class="utility-grid__code">Pick&lt;T, K&gt;</code>
+              <p>Select specific properties</p>
+            </div>
+            <div class="utility-grid__item utility-grid__item--omit">
+              <code class="utility-grid__code">Omit&lt;T, K&gt;</code>
+              <p>Remove specific properties</p>
+            </div>
+            <div class="utility-grid__item utility-grid__item--record">
+              <code class="utility-grid__code">Record&lt;K, V&gt;</code>
+              <p>Map keys to values</p>
+            </div>
+            <div class="utility-grid__item utility-grid__item--readonly">
+              <code class="utility-grid__code">Readonly&lt;T&gt;</code>
+              <p>Prevent mutation</p>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">utility.ts</span>
+            </div>
+            <pre><code><span class="token-keyword">interface</span> <span class="token-selector">User</span> {
+  <span class="token-prop">id</span>: <span class="token-selector">number</span>;
+  <span class="token-prop">name</span>: <span class="token-selector">string</span>;
+  <span class="token-prop">email</span>: <span class="token-selector">string</span>;
+}
+
+<span class="token-comment">// Partial — for update payloads</span>
+<span class="token-keyword">function</span> <span class="token-fn">updateUser</span>(
+  <span class="token-attr">id</span>: <span class="token-selector">number</span>,
+  <span class="token-attr">data</span>: <span class="token-selector">Partial</span>&lt;<span class="token-selector">User</span>&gt;
+) { <span class="token-comment">/* ... */</span> }
+
+<span class="token-fn">updateUser</span>(<span class="token-value">1</span>, { <span class="token-prop">name</span>: <span class="token-string">"Bob"</span> }); <span class="token-comment">// OK</span>
+
+<span class="token-comment">// Pick — select fields</span>
+<span class="token-keyword">type</span> <span class="token-selector">UserPreview</span> = <span class="token-selector">Pick</span>&lt;<span class="token-selector">User</span>, <span class="token-string">"id"</span> | <span class="token-string">"name"</span>&gt;;
+<span class="token-comment">// { id: number; name: string }</span>
+
+<span class="token-comment">// Omit — remove fields</span>
+<span class="token-keyword">type</span> <span class="token-selector">CreateUser</span> = <span class="token-selector">Omit</span>&lt;<span class="token-selector">User</span>, <span class="token-string">"id"</span>&gt;;
+<span class="token-comment">// { name: string; email: string }</span>
+
+<span class="token-comment">// Record — typed dictionaries</span>
+<span class="token-keyword">type</span> <span class="token-selector">Roles</span> = <span class="token-string">"admin"</span> | <span class="token-string">"user"</span> | <span class="token-string">"guest"</span>;
+<span class="token-keyword">const</span> perms: <span class="token-selector">Record</span>&lt;<span class="token-selector">Roles</span>, <span class="token-selector">string</span>[]&gt; = {
+  <span class="token-prop">admin</span>: [<span class="token-string">"read"</span>, <span class="token-string">"write"</span>, <span class="token-string">"delete"</span>],
+  <span class="token-prop">user</span>:  [<span class="token-string">"read"</span>, <span class="token-string">"write"</span>],
+  <span class="token-prop">guest</span>: [<span class="token-string">"read"</span>],
+};
+
+<span class="token-comment">// Readonly — immutable</span>
+<span class="token-keyword">const</span> config: <span class="token-selector">Readonly</span>&lt;<span class="token-selector">User</span>&gt; = {
+  <span class="token-prop">id</span>: <span class="token-value">1</span>, <span class="token-prop">name</span>: <span class="token-string">"Alice"</span>, <span class="token-prop">email</span>: <span class="token-string">"a@b.c"</span>
+};
+<span class="token-comment">// config.name = "Bob"; // Error!</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">Read JS</span>
+      <span class="footer__copy">Workshop &middot; 2026</span>
+      <div class="footer__nav">
+        <a href="index.html" class="footer__back">&larr; JavaScript Basics</a>
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

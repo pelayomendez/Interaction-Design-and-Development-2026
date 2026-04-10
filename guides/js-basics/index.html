@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read JS — JavaScript Basics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">Read JS</span>
+    <ul class="nav__links">
+      <li><a href="#why">Why</a></li>
+      <li><a href="#variables">Variables</a></li>
+      <li><a href="#functions">Functions</a></li>
+      <li><a href="#arrays-objects">Data</a></li>
+      <li><a href="#control-flow">Flow</a></li>
+      <li><a href="#dom">DOM</a></li>
+      <li><a href="#async">Async</a></li>
+    </ul>
+    <div class="nav__page-links">
+      <a href="page2.html" class="nav__page-link">TypeScript &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Workshop</span>
+      <h1 class="hero__title">Read JS<br /><em>JavaScript Basics</em></h1>
+      <p class="hero__sub">A practical guide to the fundamentals of JavaScript — the language of the web.</p>
+      <a href="#why" class="btn btn--primary">Get Started &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>const x = 42</span>
+      <span>() => { ... }</span>
+      <span>async / await</span>
+      <span>document.querySelector()</span>
+      <span>[...array].map(fn)</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 0: WHY JAVASCRIPT -->
+  <section class="slide slide--dark" id="why">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Intro</span>
+        <h2 class="slide__title">Why Learn JavaScript?</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">JavaScript is the only language that runs natively in every browser.</p>
+          <h3 class="slide__subtitle">It powers:</h3>
+          <ul class="list list--good">
+            <li>Interactive websites and web apps</li>
+            <li>Server-side code with Node.js</li>
+            <li>Mobile apps (React Native, Ionic)</li>
+            <li>Desktop apps (Electron)</li>
+          </ul>
+          <h3 class="slide__subtitle">Modern JS gives you:</h3>
+          <ul class="list list--neutral">
+            <li>Block-scoped variables with <code class="inline-code">let</code> and <code class="inline-code">const</code></li>
+            <li>Arrow functions and destructuring</li>
+            <li>Async/await for clean asynchronous code</li>
+            <li>Modules for organized, reusable code</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">hello.js</span>
+            </div>
+            <pre><code><span class="token-comment">// JavaScript runs everywhere</span>
+<span class="token-keyword">const</span> <span class="token-fn">greet</span> = (<span class="token-attr">name</span>) => {
+  <span class="token-keyword">return</span> <span class="token-string">`Hello, ${name}!`</span>;
+};
+
+<span class="token-fn">console</span>.<span class="token-fn">log</span>(<span class="token-fn">greet</span>(<span class="token-string">"World"</span>));
+<span class="token-comment">// "Hello, World!"</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">modern.js</span>
+            </div>
+            <pre><code><span class="token-comment">// Modern JS features</span>
+<span class="token-keyword">const</span> users = [
+  { <span class="token-prop">name</span>: <span class="token-string">"Alice"</span>, <span class="token-prop">age</span>: <span class="token-value">28</span> },
+  { <span class="token-prop">name</span>: <span class="token-string">"Bob"</span>, <span class="token-prop">age</span>: <span class="token-value">32</span> },
+];
+
+<span class="token-keyword">const</span> names = users.<span class="token-fn">map</span>((<span class="token-attr">u</span>) => u.name);
+<span class="token-comment">// ["Alice", "Bob"]</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: VARIABLES -->
+  <section class="slide slide--light" id="variables">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 1</span>
+        <h2 class="slide__title">Variables &amp; Data Types</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Variables store values. Use <code class="inline-code">const</code> by default, <code class="inline-code">let</code> when you need reassignment.</p>
+          <div class="type-grid">
+            <div class="type-grid__item type-grid__item--string">
+              <code class="type-grid__code">String</code>
+              <p><code class="inline-code">"hello"</code> or <code class="inline-code">`template`</code></p>
+            </div>
+            <div class="type-grid__item type-grid__item--number">
+              <code class="type-grid__code">Number</code>
+              <p><code class="inline-code">42</code>, <code class="inline-code">3.14</code>, <code class="inline-code">NaN</code></p>
+            </div>
+            <div class="type-grid__item type-grid__item--boolean">
+              <code class="type-grid__code">Boolean</code>
+              <p><code class="inline-code">true</code> or <code class="inline-code">false</code></p>
+            </div>
+            <div class="type-grid__item type-grid__item--special">
+              <code class="type-grid__code">null / undefined</code>
+              <p>Intentional empty vs unset</p>
+            </div>
+          </div>
+          <div class="badge badge--accent">Avoid <code class="inline-code">var</code> — it has confusing scoping rules</div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">variables.js</span>
+            </div>
+            <pre><code><span class="token-comment">// const — cannot be reassigned</span>
+<span class="token-keyword">const</span> API_URL = <span class="token-string">"https://api.example.com"</span>;
+<span class="token-keyword">const</span> MAX_RETRIES = <span class="token-value">3</span>;
+
+<span class="token-comment">// let — can be reassigned</span>
+<span class="token-keyword">let</span> count = <span class="token-value">0</span>;
+count = count + <span class="token-value">1</span>; <span class="token-comment">// OK</span>
+
+<span class="token-comment">// Data types</span>
+<span class="token-keyword">const</span> name = <span class="token-string">"Alice"</span>;        <span class="token-comment">// string</span>
+<span class="token-keyword">const</span> age = <span class="token-value">28</span>;              <span class="token-comment">// number</span>
+<span class="token-keyword">const</span> active = <span class="token-value">true</span>;         <span class="token-comment">// boolean</span>
+<span class="token-keyword">const</span> empty = <span class="token-value">null</span>;          <span class="token-comment">// null</span>
+<span class="token-keyword">let</span> notSet;                   <span class="token-comment">// undefined</span>
+
+<span class="token-comment">// Template literals</span>
+<span class="token-keyword">const</span> msg = <span class="token-string">`${name} is ${age} years old`</span>;
+
+<span class="token-comment">// typeof checks the type</span>
+<span class="token-keyword">typeof</span> name;  <span class="token-comment">// "string"</span>
+<span class="token-keyword">typeof</span> age;   <span class="token-comment">// "number"</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: FUNCTIONS -->
+  <section class="slide slide--dark" id="functions">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 2</span>
+        <h2 class="slide__title">Functions</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Functions are reusable blocks of code. JS has multiple ways to define them.</p>
+          <div class="fn-compare">
+            <div class="fn-compare__item fn-compare__item--declaration">
+              <code class="fn-compare__code">function declaration</code>
+              <p>Hoisted — can be called before it's defined</p>
+            </div>
+            <div class="fn-compare__item fn-compare__item--expression">
+              <code class="fn-compare__code">function expression</code>
+              <p>Assigned to a variable — not hoisted</p>
+            </div>
+            <div class="fn-compare__item fn-compare__item--arrow">
+              <code class="fn-compare__code">arrow function</code>
+              <p>Short syntax, lexical <code class="inline-code">this</code></p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key concepts:</h3>
+          <ul class="list list--neutral">
+            <li>Parameters receive values, arguments pass them</li>
+            <li>Default parameters: <code class="inline-code">fn(x = 10)</code></li>
+            <li>Rest parameters: <code class="inline-code">fn(...args)</code></li>
+            <li>Functions are first-class — pass them like values</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">functions.js</span>
+            </div>
+            <pre><code><span class="token-comment">// Function declaration (hoisted)</span>
+<span class="token-keyword">function</span> <span class="token-fn">add</span>(<span class="token-attr">a</span>, <span class="token-attr">b</span>) {
+  <span class="token-keyword">return</span> a + b;
+}
+
+<span class="token-comment">// Arrow function (concise)</span>
+<span class="token-keyword">const</span> <span class="token-fn">multiply</span> = (<span class="token-attr">a</span>, <span class="token-attr">b</span>) => a * b;
+
+<span class="token-comment">// Default parameters</span>
+<span class="token-keyword">const</span> <span class="token-fn">greet</span> = (<span class="token-attr">name</span> = <span class="token-string">"stranger"</span>) => {
+  <span class="token-keyword">return</span> <span class="token-string">`Hello, ${name}!`</span>;
+};
+
+<span class="token-comment">// Rest parameters</span>
+<span class="token-keyword">const</span> <span class="token-fn">sum</span> = (<span class="token-attr">...numbers</span>) => {
+  <span class="token-keyword">return</span> numbers.<span class="token-fn">reduce</span>((<span class="token-attr">a</span>, <span class="token-attr">b</span>) => a + b, <span class="token-value">0</span>);
+};
+
+<span class="token-fn">sum</span>(<span class="token-value">1</span>, <span class="token-value">2</span>, <span class="token-value">3</span>, <span class="token-value">4</span>); <span class="token-comment">// 10</span>
+
+<span class="token-comment">// Functions as arguments (callbacks)</span>
+<span class="token-keyword">const</span> nums = [<span class="token-value">1</span>, <span class="token-value">2</span>, <span class="token-value">3</span>];
+<span class="token-keyword">const</span> doubled = nums.<span class="token-fn">map</span>(<span class="token-attr">n</span> => n * <span class="token-value">2</span>);
+<span class="token-comment">// [2, 4, 6]</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: ARRAYS & OBJECTS -->
+  <section class="slide slide--light" id="arrays-objects">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 3</span>
+        <h2 class="slide__title">Arrays &amp; Objects</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Arrays hold ordered lists. Objects hold key-value pairs. Together they model any data.</p>
+          <div class="data-compare">
+            <div class="data-compare__col data-compare__col--array">
+              <span class="data-compare__title">Array</span>
+              <p>Ordered, indexed from 0</p>
+              <ul class="list list--neutral">
+                <li><code class="inline-code">.map()</code> — transform</li>
+                <li><code class="inline-code">.filter()</code> — select</li>
+                <li><code class="inline-code">.reduce()</code> — accumulate</li>
+              </ul>
+            </div>
+            <div class="data-compare__col data-compare__col--object">
+              <span class="data-compare__title">Object</span>
+              <p>Key-value pairs, unordered</p>
+              <ul class="list list--neutral">
+                <li><code class="inline-code">obj.key</code> — dot access</li>
+                <li><code class="inline-code">obj["key"]</code> — bracket access</li>
+                <li><code class="inline-code">{ ...obj }</code> — spread/copy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">arrays.js</span>
+            </div>
+            <pre><code><span class="token-comment">// Arrays</span>
+<span class="token-keyword">const</span> fruits = [<span class="token-string">"apple"</span>, <span class="token-string">"banana"</span>, <span class="token-string">"cherry"</span>];
+fruits.<span class="token-fn">push</span>(<span class="token-string">"date"</span>);    <span class="token-comment">// add to end</span>
+fruits[<span class="token-value">0</span>];              <span class="token-comment">// "apple"</span>
+fruits.<span class="token-prop">length</span>;          <span class="token-comment">// 4</span>
+
+<span class="token-comment">// Array methods (immutable)</span>
+<span class="token-keyword">const</span> prices = [<span class="token-value">10</span>, <span class="token-value">20</span>, <span class="token-value">30</span>, <span class="token-value">5</span>];
+<span class="token-keyword">const</span> expensive = prices.<span class="token-fn">filter</span>(<span class="token-attr">p</span> => p > <span class="token-value">15</span>);
+<span class="token-keyword">const</span> total = prices.<span class="token-fn">reduce</span>((<span class="token-attr">sum</span>, <span class="token-attr">p</span>) => sum + p, <span class="token-value">0</span>);
+
+<span class="token-comment">// Destructuring</span>
+<span class="token-keyword">const</span> [first, ...rest] = fruits;</code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">objects.js</span>
+            </div>
+            <pre><code><span class="token-comment">// Objects</span>
+<span class="token-keyword">const</span> user = {
+  <span class="token-prop">name</span>: <span class="token-string">"Alice"</span>,
+  <span class="token-prop">age</span>: <span class="token-value">28</span>,
+  <span class="token-prop">skills</span>: [<span class="token-string">"JS"</span>, <span class="token-string">"CSS"</span>],
+};
+
+<span class="token-comment">// Destructuring</span>
+<span class="token-keyword">const</span> { name, age } = user;
+
+<span class="token-comment">// Spread — shallow copy</span>
+<span class="token-keyword">const</span> updated = { ...user, <span class="token-prop">age</span>: <span class="token-value">29</span> };
+
+<span class="token-comment">// Optional chaining</span>
+<span class="token-keyword">const</span> city = user.address?.<span class="token-prop">city</span>;
+<span class="token-comment">// undefined (no error)</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: CONTROL FLOW -->
+  <section class="slide slide--dark" id="control-flow">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 4</span>
+        <h2 class="slide__title">Control Flow</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Control flow decides which code runs and how many times.</p>
+          <div class="flow-grid">
+            <div class="flow-grid__item flow-grid__item--condition">
+              <code class="flow-grid__code">if / else</code>
+              <p>Branch based on a condition</p>
+            </div>
+            <div class="flow-grid__item flow-grid__item--loop">
+              <code class="flow-grid__code">for / for...of</code>
+              <p>Repeat over a range or collection</p>
+            </div>
+            <div class="flow-grid__item flow-grid__item--ternary">
+              <code class="flow-grid__code">ternary ?:</code>
+              <p>Inline conditional expression</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Important:</h3>
+          <ul class="list list--good">
+            <li>Use <code class="inline-code">===</code> (strict equality), not <code class="inline-code">==</code></li>
+            <li><code class="inline-code">for...of</code> for arrays, <code class="inline-code">for...in</code> for object keys</li>
+            <li>Prefer <code class="inline-code">.map()</code> / <code class="inline-code">.filter()</code> over manual loops</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">control.js</span>
+            </div>
+            <pre><code><span class="token-comment">// if / else if / else</span>
+<span class="token-keyword">const</span> score = <span class="token-value">85</span>;
+
+<span class="token-keyword">if</span> (score >= <span class="token-value">90</span>) {
+  <span class="token-fn">console</span>.<span class="token-fn">log</span>(<span class="token-string">"A"</span>);
+} <span class="token-keyword">else if</span> (score >= <span class="token-value">80</span>) {
+  <span class="token-fn">console</span>.<span class="token-fn">log</span>(<span class="token-string">"B"</span>);
+} <span class="token-keyword">else</span> {
+  <span class="token-fn">console</span>.<span class="token-fn">log</span>(<span class="token-string">"C"</span>);
+}
+
+<span class="token-comment">// Ternary operator</span>
+<span class="token-keyword">const</span> label = score >= <span class="token-value">80</span> ? <span class="token-string">"pass"</span> : <span class="token-string">"fail"</span>;
+
+<span class="token-comment">// for...of — iterate over values</span>
+<span class="token-keyword">const</span> colors = [<span class="token-string">"red"</span>, <span class="token-string">"green"</span>, <span class="token-string">"blue"</span>];
+
+<span class="token-keyword">for</span> (<span class="token-keyword">const</span> color <span class="token-keyword">of</span> colors) {
+  <span class="token-fn">console</span>.<span class="token-fn">log</span>(color);
+}
+
+<span class="token-comment">// Strict equality — always use ===</span>
+<span class="token-value">0</span> == <span class="token-string">""</span>;    <span class="token-comment">// true  (type coercion!)</span>
+<span class="token-value">0</span> === <span class="token-string">""</span>;   <span class="token-comment">// false (safe)</span>
+
+<span class="token-comment">// Nullish coalescing</span>
+<span class="token-keyword">const</span> val = <span class="token-value">null</span> ?? <span class="token-string">"default"</span>;
+<span class="token-comment">// "default"</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: DOM MANIPULATION -->
+  <section class="slide slide--light" id="dom">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 5</span>
+        <h2 class="slide__title">DOM Manipulation</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">The DOM is JavaScript's interface to the HTML page. Read, create, and modify elements.</p>
+          <div class="dom-steps">
+            <div class="dom-steps__item">
+              <span class="dom-steps__num">1</span>
+              <div>
+                <strong>Select</strong>
+                <p>Find elements with <code class="inline-code">querySelector</code></p>
+              </div>
+            </div>
+            <div class="dom-steps__item">
+              <span class="dom-steps__num">2</span>
+              <div>
+                <strong>Modify</strong>
+                <p>Change text, attributes, or styles</p>
+              </div>
+            </div>
+            <div class="dom-steps__item">
+              <span class="dom-steps__num">3</span>
+              <div>
+                <strong>Listen</strong>
+                <p>React to clicks, input, and other events</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Best practices:</h3>
+          <ul class="list list--good">
+            <li>Use <code class="inline-code">querySelector</code> over <code class="inline-code">getElementById</code></li>
+            <li>Prefer <code class="inline-code">textContent</code> over <code class="inline-code">innerHTML</code> for safety</li>
+            <li>Use event delegation for dynamic lists</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">dom.js</span>
+            </div>
+            <pre><code><span class="token-comment">// Select elements</span>
+<span class="token-keyword">const</span> btn = <span class="token-fn">document</span>.<span class="token-fn">querySelector</span>(<span class="token-string">".btn"</span>);
+<span class="token-keyword">const</span> items = <span class="token-fn">document</span>.<span class="token-fn">querySelectorAll</span>(<span class="token-string">"li"</span>);
+
+<span class="token-comment">// Modify content</span>
+btn.<span class="token-prop">textContent</span> = <span class="token-string">"Click me"</span>;
+btn.<span class="token-prop">classList</span>.<span class="token-fn">add</span>(<span class="token-string">"btn--active"</span>);
+btn.<span class="token-fn">setAttribute</span>(<span class="token-string">"disabled"</span>, <span class="token-value">true</span>);
+
+<span class="token-comment">// Listen for events</span>
+btn.<span class="token-fn">addEventListener</span>(<span class="token-string">"click"</span>, (<span class="token-attr">event</span>) => {
+  <span class="token-fn">console</span>.<span class="token-fn">log</span>(<span class="token-string">"Clicked!"</span>, event.target);
+});
+
+<span class="token-comment">// Create elements</span>
+<span class="token-keyword">const</span> el = <span class="token-fn">document</span>.<span class="token-fn">createElement</span>(<span class="token-string">"p"</span>);
+el.<span class="token-prop">textContent</span> = <span class="token-string">"New paragraph"</span>;
+<span class="token-fn">document</span>.<span class="token-prop">body</span>.<span class="token-fn">appendChild</span>(el);
+
+<span class="token-comment">// Loop over NodeList</span>
+items.<span class="token-fn">forEach</span>((<span class="token-attr">item</span>) => {
+  item.<span class="token-prop">style</span>.<span class="token-prop">color</span> = <span class="token-string">"blue"</span>;
+});</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: ASYNC -->
+  <section class="slide slide--dark" id="async">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 6</span>
+        <h2 class="slide__title">Async &amp; Promises</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">JavaScript is single-threaded but non-blocking. Async code lets you wait without freezing.</p>
+          <div class="async-compare">
+            <div class="async-compare__item async-compare__item--callback">
+              <code class="async-compare__code">Callbacks</code>
+              <p>The old way — leads to "callback hell"</p>
+            </div>
+            <div class="async-compare__item async-compare__item--promise">
+              <code class="async-compare__code">Promises</code>
+              <p>Chainable with <code class="inline-code">.then()</code></p>
+            </div>
+            <div class="async-compare__item async-compare__item--await">
+              <code class="async-compare__code">async/await</code>
+              <p>Looks synchronous, works asynchronously</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key points:</h3>
+          <ul class="list list--good">
+            <li>Always handle errors with <code class="inline-code">try/catch</code></li>
+            <li>Use <code class="inline-code">Promise.all()</code> for parallel requests</li>
+            <li><code class="inline-code">fetch()</code> is the modern API for HTTP requests</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">async.js</span>
+            </div>
+            <pre><code><span class="token-comment">// Promise with .then()</span>
+<span class="token-fn">fetch</span>(<span class="token-string">"https://api.example.com/users"</span>)
+  .<span class="token-fn">then</span>(<span class="token-attr">res</span> => res.<span class="token-fn">json</span>())
+  .<span class="token-fn">then</span>(<span class="token-attr">data</span> => <span class="token-fn">console</span>.<span class="token-fn">log</span>(data))
+  .<span class="token-fn">catch</span>(<span class="token-attr">err</span> => <span class="token-fn">console</span>.<span class="token-fn">error</span>(err));
+
+<span class="token-comment">// async/await — cleaner syntax</span>
+<span class="token-keyword">async function</span> <span class="token-fn">getUsers</span>() {
+  <span class="token-keyword">try</span> {
+    <span class="token-keyword">const</span> res = <span class="token-keyword">await</span> <span class="token-fn">fetch</span>(<span class="token-string">"/api/users"</span>);
+    <span class="token-keyword">const</span> data = <span class="token-keyword">await</span> res.<span class="token-fn">json</span>();
+    <span class="token-keyword">return</span> data;
+  } <span class="token-keyword">catch</span> (err) {
+    <span class="token-fn">console</span>.<span class="token-fn">error</span>(<span class="token-string">"Failed:"</span>, err);
+  }
+}
+
+<span class="token-comment">// Parallel requests</span>
+<span class="token-keyword">const</span> [users, posts] = <span class="token-keyword">await</span> <span class="token-fn">Promise</span>.<span class="token-fn">all</span>([
+  <span class="token-fn">fetch</span>(<span class="token-string">"/api/users"</span>).<span class="token-fn">then</span>(<span class="token-attr">r</span> => r.<span class="token-fn">json</span>()),
+  <span class="token-fn">fetch</span>(<span class="token-string">"/api/posts"</span>).<span class="token-fn">then</span>(<span class="token-attr">r</span> => r.<span class="token-fn">json</span>()),
+]);</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">Read JS</span>
+      <span class="footer__copy">Workshop &middot; 2026</span>
+      <div class="footer__nav">
+        <a href="page2.html" class="footer__back">TypeScript Basics &rarr;</a>
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

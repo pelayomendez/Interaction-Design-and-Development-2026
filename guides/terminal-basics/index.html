@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read Terminal — Terminal Basics</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">Read Terminal</span>
+    <ul class="nav__links">
+      <li><a href="#why">Why</a></li>
+      <li><a href="#navigation">Navigate</a></li>
+      <li><a href="#files">Files</a></li>
+      <li><a href="#reading">Reading</a></li>
+      <li><a href="#search">Search</a></li>
+      <li><a href="#permissions">Permissions</a></li>
+      <li><a href="#pipes">Pipes</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Workshop</span>
+      <h1 class="hero__title">Read Terminal<br /><em>Terminal Basics</em></h1>
+      <p class="hero__sub">A practical guide to the command line &mdash; the most powerful tool on your computer.</p>
+      <a href="#why" class="btn btn--primary">Get Started &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>cd ~/projects</span>
+      <span>ls -la</span>
+      <span>grep -r "TODO"</span>
+      <span>cat file.txt | sort</span>
+      <span>chmod +x script.sh</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 0: WHY THE TERMINAL -->
+  <section class="slide slide--dark" id="why">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Intro</span>
+        <h2 class="slide__title">Why Learn the Terminal?</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">The terminal gives you direct, text-based control over your computer &mdash; no clicking, no menus.</p>
+          <h3 class="slide__subtitle">You can:</h3>
+          <ul class="list list--good">
+            <li>Navigate your file system at lightning speed</li>
+            <li>Automate repetitive tasks with scripts</li>
+            <li>Use developer tools like Git, npm, and Docker</li>
+            <li>Connect to remote servers via SSH</li>
+          </ul>
+          <h3 class="slide__subtitle">Terminology:</h3>
+          <ul class="list list--neutral">
+            <li><code class="inline-code">Terminal</code> &mdash; the window/app you type in</li>
+            <li><code class="inline-code">Shell</code> &mdash; the program interpreting your commands (bash, zsh)</li>
+            <li><code class="inline-code">CLI</code> &mdash; Command Line Interface</li>
+            <li><code class="inline-code">Prompt</code> &mdash; the text waiting for your input (e.g. <code class="inline-code">$</code>)</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">terminal</span>
+            </div>
+            <pre><code><span class="token-comment"># Your first commands</span>
+<span class="token-keyword">$</span> <span class="token-fn">whoami</span>
+<span class="token-string">alice</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">date</span>
+<span class="token-string">Wed Apr  9 10:30:00 CEST 2026</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">echo</span> <span class="token-string">"Hello, Terminal!"</span>
+<span class="token-string">Hello, Terminal!</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">pwd</span>
+<span class="token-string">/Users/alice</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">anatomy</span>
+            </div>
+            <pre><code><span class="token-comment"># Anatomy of a command</span>
+<span class="token-keyword">$</span> <span class="token-fn">command</span> <span class="token-attr">-flags</span> <span class="token-string">arguments</span>
+
+<span class="token-comment"># Example:</span>
+<span class="token-keyword">$</span> <span class="token-fn">ls</span> <span class="token-attr">-la</span> <span class="token-string">/Users/alice</span>
+<span class="token-comment">#  ^    ^     ^</span>
+<span class="token-comment">#  cmd  flags  argument</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: NAVIGATION -->
+  <section class="slide slide--light" id="navigation">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 1</span>
+        <h2 class="slide__title">Navigation</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Move around your file system with three essential commands.</p>
+          <div class="cmd-grid">
+            <div class="cmd-grid__item cmd-grid__item--primary">
+              <code class="cmd-grid__code">pwd</code>
+              <p>Print Working Directory &mdash; shows where you are</p>
+            </div>
+            <div class="cmd-grid__item cmd-grid__item--good">
+              <code class="cmd-grid__code">ls</code>
+              <p>List files and folders in the current directory</p>
+            </div>
+            <div class="cmd-grid__item cmd-grid__item--accent">
+              <code class="cmd-grid__code">cd</code>
+              <p>Change Directory &mdash; move to another folder</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Path shortcuts:</h3>
+          <ul class="list list--neutral">
+            <li><code class="inline-code">~</code> &mdash; your home directory</li>
+            <li><code class="inline-code">.</code> &mdash; current directory</li>
+            <li><code class="inline-code">..</code> &mdash; parent directory</li>
+            <li><code class="inline-code">/</code> &mdash; root of the file system</li>
+          </ul>
+          <div class="badge badge--accent">Press Tab to autocomplete paths and commands</div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">navigation.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Where am I?</span>
+<span class="token-keyword">$</span> <span class="token-fn">pwd</span>
+<span class="token-string">/Users/alice</span>
+
+<span class="token-comment"># List files (simple)</span>
+<span class="token-keyword">$</span> <span class="token-fn">ls</span>
+<span class="token-string">Desktop  Documents  Downloads</span>
+
+<span class="token-comment"># List with details + hidden files</span>
+<span class="token-keyword">$</span> <span class="token-fn">ls</span> <span class="token-attr">-la</span>
+<span class="token-value">drwxr-xr-x  5 alice staff  160 Apr 9 10:00</span> <span class="token-string">.</span>
+<span class="token-value">drwxr-xr-x  3 alice staff   96 Apr 9 09:00</span> <span class="token-string">..</span>
+<span class="token-value">-rw-r--r--  1 alice staff  220 Apr 9 10:00</span> <span class="token-string">.bashrc</span>
+<span class="token-value">drwxr-xr-x  4 alice staff  128 Apr 9 10:00</span> <span class="token-string">projects</span>
+
+<span class="token-comment"># Move around</span>
+<span class="token-keyword">$</span> <span class="token-fn">cd</span> <span class="token-string">projects</span>         <span class="token-comment"># go into folder</span>
+<span class="token-keyword">$</span> <span class="token-fn">cd</span> <span class="token-string">..</span>               <span class="token-comment"># go back up</span>
+<span class="token-keyword">$</span> <span class="token-fn">cd</span> <span class="token-string">~</span>                <span class="token-comment"># go home</span>
+<span class="token-keyword">$</span> <span class="token-fn">cd</span> <span class="token-string">~/Desktop/work</span>   <span class="token-comment"># absolute path</span>
+<span class="token-keyword">$</span> <span class="token-fn">cd</span> <span class="token-attr">-</span>                <span class="token-comment"># go to previous dir</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: FILE OPERATIONS -->
+  <section class="slide slide--dark" id="files">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 2</span>
+        <h2 class="slide__title">File Operations</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Create, copy, move, and delete files and folders from the command line.</p>
+          <div class="cmd-compare">
+            <div class="cmd-compare__item cmd-compare__item--create">
+              <code class="cmd-compare__code">touch / mkdir</code>
+              <p>Create files and directories</p>
+            </div>
+            <div class="cmd-compare__item cmd-compare__item--move">
+              <code class="cmd-compare__code">cp / mv</code>
+              <p>Copy and move (or rename) files</p>
+            </div>
+            <div class="cmd-compare__item cmd-compare__item--delete">
+              <code class="cmd-compare__code">rm / rmdir</code>
+              <p>Remove files and empty directories</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Be careful:</h3>
+          <ul class="list list--bad">
+            <li><code class="inline-code">rm</code> deletes permanently &mdash; no trash bin!</li>
+            <li><code class="inline-code">rm -rf</code> is dangerous &mdash; deletes recursively without asking</li>
+            <li>Always double-check paths before deleting</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">files.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Create files and directories</span>
+<span class="token-keyword">$</span> <span class="token-fn">touch</span> <span class="token-string">index.html</span>         <span class="token-comment"># create a file</span>
+<span class="token-keyword">$</span> <span class="token-fn">mkdir</span> <span class="token-string">my-project</span>         <span class="token-comment"># create a folder</span>
+<span class="token-keyword">$</span> <span class="token-fn">mkdir</span> <span class="token-attr">-p</span> <span class="token-string">src/components</span>  <span class="token-comment"># create nested dirs</span>
+
+<span class="token-comment"># Copy</span>
+<span class="token-keyword">$</span> <span class="token-fn">cp</span> <span class="token-string">file.txt</span> <span class="token-string">copy.txt</span>    <span class="token-comment"># copy a file</span>
+<span class="token-keyword">$</span> <span class="token-fn">cp</span> <span class="token-attr">-r</span> <span class="token-string">src/</span> <span class="token-string">backup/</span>      <span class="token-comment"># copy folder recursively</span>
+
+<span class="token-comment"># Move / Rename</span>
+<span class="token-keyword">$</span> <span class="token-fn">mv</span> <span class="token-string">old.txt</span> <span class="token-string">new.txt</span>     <span class="token-comment"># rename a file</span>
+<span class="token-keyword">$</span> <span class="token-fn">mv</span> <span class="token-string">file.txt</span> <span class="token-string">src/</span>       <span class="token-comment"># move to folder</span>
+
+<span class="token-comment"># Delete</span>
+<span class="token-keyword">$</span> <span class="token-fn">rm</span> <span class="token-string">file.txt</span>             <span class="token-comment"># delete a file</span>
+<span class="token-keyword">$</span> <span class="token-fn">rmdir</span> <span class="token-string">empty-folder</span>      <span class="token-comment"># delete empty dir</span>
+<span class="token-keyword">$</span> <span class="token-fn">rm</span> <span class="token-attr">-r</span> <span class="token-string">folder/</span>           <span class="token-comment"># delete dir + contents</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: READING FILES -->
+  <section class="slide slide--light" id="reading">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 3</span>
+        <h2 class="slide__title">Reading Files</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">View file contents without opening an editor &mdash; fast and flexible.</p>
+          <div class="data-compare">
+            <div class="data-compare__col data-compare__col--array">
+              <span class="data-compare__title">Quick View</span>
+              <p>Print the whole file or parts of it</p>
+              <ul class="list list--neutral">
+                <li><code class="inline-code">cat</code> &mdash; print all</li>
+                <li><code class="inline-code">head</code> &mdash; first N lines</li>
+                <li><code class="inline-code">tail</code> &mdash; last N lines</li>
+              </ul>
+            </div>
+            <div class="data-compare__col data-compare__col--object">
+              <span class="data-compare__title">Interactive</span>
+              <p>Scroll through large files</p>
+              <ul class="list list--neutral">
+                <li><code class="inline-code">less</code> &mdash; scroll up/down</li>
+                <li><code class="inline-code">/text</code> &mdash; search inside</li>
+                <li><code class="inline-code">q</code> &mdash; quit</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">reading.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Print entire file</span>
+<span class="token-keyword">$</span> <span class="token-fn">cat</span> <span class="token-string">readme.md</span>
+
+<span class="token-comment"># First 10 lines (default)</span>
+<span class="token-keyword">$</span> <span class="token-fn">head</span> <span class="token-string">readme.md</span>
+
+<span class="token-comment"># First 5 lines</span>
+<span class="token-keyword">$</span> <span class="token-fn">head</span> <span class="token-attr">-n 5</span> <span class="token-string">readme.md</span>
+
+<span class="token-comment"># Last 20 lines</span>
+<span class="token-keyword">$</span> <span class="token-fn">tail</span> <span class="token-attr">-n 20</span> <span class="token-string">server.log</span>
+
+<span class="token-comment"># Follow a log file in real time</span>
+<span class="token-keyword">$</span> <span class="token-fn">tail</span> <span class="token-attr">-f</span> <span class="token-string">server.log</span>
+
+<span class="token-comment"># Scroll through a large file</span>
+<span class="token-keyword">$</span> <span class="token-fn">less</span> <span class="token-string">big-file.txt</span>
+<span class="token-comment"># Use arrows to scroll, /word to search, q to quit</span>
+
+<span class="token-comment"># Count lines, words, characters</span>
+<span class="token-keyword">$</span> <span class="token-fn">wc</span> <span class="token-attr">-l</span> <span class="token-string">readme.md</span>
+<span class="token-string">42 readme.md</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: SEARCHING -->
+  <section class="slide slide--dark" id="search">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 4</span>
+        <h2 class="slide__title">Searching</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Find files by name or search inside files for text patterns.</p>
+          <div class="search-grid">
+            <div class="search-grid__item search-grid__item--find">
+              <code class="search-grid__code">find</code>
+              <p>Search by file name, type, or size</p>
+            </div>
+            <div class="search-grid__item search-grid__item--grep">
+              <code class="search-grid__code">grep</code>
+              <p>Search inside files for text patterns</p>
+            </div>
+            <div class="search-grid__item search-grid__item--which">
+              <code class="search-grid__code">which</code>
+              <p>Find where a command is installed</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Useful flags:</h3>
+          <ul class="list list--good">
+            <li><code class="inline-code">grep -r</code> &mdash; recursive (search in subdirs)</li>
+            <li><code class="inline-code">grep -i</code> &mdash; case insensitive</li>
+            <li><code class="inline-code">grep -n</code> &mdash; show line numbers</li>
+            <li><code class="inline-code">find -name "*.js"</code> &mdash; wildcards</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">search.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Find files by name</span>
+<span class="token-keyword">$</span> <span class="token-fn">find</span> <span class="token-string">.</span> <span class="token-attr">-name</span> <span class="token-string">"*.html"</span>
+<span class="token-string">./index.html</span>
+<span class="token-string">./about/index.html</span>
+
+<span class="token-comment"># Find only directories</span>
+<span class="token-keyword">$</span> <span class="token-fn">find</span> <span class="token-string">.</span> <span class="token-attr">-type d</span> <span class="token-attr">-name</span> <span class="token-string">"src"</span>
+
+<span class="token-comment"># Search text inside files</span>
+<span class="token-keyword">$</span> <span class="token-fn">grep</span> <span class="token-string">"TODO"</span> <span class="token-string">app.js</span>
+<span class="token-value">12:</span><span class="token-string">  // TODO: add error handling</span>
+
+<span class="token-comment"># Recursive + case insensitive + line numbers</span>
+<span class="token-keyword">$</span> <span class="token-fn">grep</span> <span class="token-attr">-rin</span> <span class="token-string">"error"</span> <span class="token-string">src/</span>
+<span class="token-value">src/api.js:8:</span><span class="token-string">  throw new Error("Not found");</span>
+<span class="token-value">src/utils.js:14:</span><span class="token-string">  console.error(msg);</span>
+
+<span class="token-comment"># Where is a command?</span>
+<span class="token-keyword">$</span> <span class="token-fn">which</span> <span class="token-string">node</span>
+<span class="token-string">/usr/local/bin/node</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: PERMISSIONS & PROCESSES -->
+  <section class="slide slide--light" id="permissions">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 5</span>
+        <h2 class="slide__title">Permissions &amp; Processes</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Control who can access files and manage running programs.</p>
+          <div class="perm-steps">
+            <div class="perm-steps__item">
+              <span class="perm-steps__num">r</span>
+              <div>
+                <strong>Read</strong>
+                <p>View file contents or list a directory</p>
+              </div>
+            </div>
+            <div class="perm-steps__item">
+              <span class="perm-steps__num">w</span>
+              <div>
+                <strong>Write</strong>
+                <p>Modify file contents or add/remove files in a dir</p>
+              </div>
+            </div>
+            <div class="perm-steps__item">
+              <span class="perm-steps__num">x</span>
+              <div>
+                <strong>Execute</strong>
+                <p>Run a file as a program or enter a directory</p>
+              </div>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key commands:</h3>
+          <ul class="list list--good">
+            <li><code class="inline-code">chmod</code> &mdash; change permissions</li>
+            <li><code class="inline-code">sudo</code> &mdash; run as superuser (admin)</li>
+            <li><code class="inline-code">ps</code> / <code class="inline-code">top</code> &mdash; view running processes</li>
+            <li><code class="inline-code">kill</code> &mdash; stop a process by its PID</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">permissions.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Understanding permissions: rwxr-xr--</span>
+<span class="token-comment">#   rwx   r-x   r--</span>
+<span class="token-comment">#   user  group  others</span>
+
+<span class="token-comment"># Make a script executable</span>
+<span class="token-keyword">$</span> <span class="token-fn">chmod</span> <span class="token-attr">+x</span> <span class="token-string">deploy.sh</span>
+
+<span class="token-comment"># Set specific permissions (owner: rwx, others: r)</span>
+<span class="token-keyword">$</span> <span class="token-fn">chmod</span> <span class="token-value">744</span> <span class="token-string">deploy.sh</span>
+
+<span class="token-comment"># Run as admin</span>
+<span class="token-keyword">$</span> <span class="token-fn">sudo</span> <span class="token-fn">apt</span> <span class="token-string">install nodejs</span>
+
+<span class="token-comment"># List running processes</span>
+<span class="token-keyword">$</span> <span class="token-fn">ps</span> <span class="token-attr">aux</span> | <span class="token-fn">grep</span> <span class="token-string">node</span>
+<span class="token-value">alice 1234</span> <span class="token-string">0.5  1.2 node server.js</span>
+
+<span class="token-comment"># Stop a process</span>
+<span class="token-keyword">$</span> <span class="token-fn">kill</span> <span class="token-value">1234</span>
+
+<span class="token-comment"># Force stop</span>
+<span class="token-keyword">$</span> <span class="token-fn">kill</span> <span class="token-attr">-9</span> <span class="token-value">1234</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: PIPES & REDIRECTS -->
+  <section class="slide slide--dark" id="pipes">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Basics 6</span>
+        <h2 class="slide__title">Pipes &amp; Redirects</h2>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Chain commands together and control where output goes &mdash; the real power of the terminal.</p>
+          <div class="pipe-compare">
+            <div class="pipe-compare__item pipe-compare__item--pipe">
+              <code class="pipe-compare__code">| (pipe)</code>
+              <p>Send one command's output into the next command</p>
+            </div>
+            <div class="pipe-compare__item pipe-compare__item--write">
+              <code class="pipe-compare__code">&gt; (redirect)</code>
+              <p>Write output to a file (overwrites)</p>
+            </div>
+            <div class="pipe-compare__item pipe-compare__item--append">
+              <code class="pipe-compare__code">&gt;&gt; (append)</code>
+              <p>Append output to a file</p>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Pro tips:</h3>
+          <ul class="list list--good">
+            <li><code class="inline-code">Ctrl + C</code> &mdash; cancel a running command</li>
+            <li><code class="inline-code">Ctrl + L</code> &mdash; clear the screen</li>
+            <li><code class="inline-code">Up/Down</code> arrows &mdash; cycle through history</li>
+            <li><code class="inline-code">history</code> &mdash; list past commands</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">pipes.sh</span>
+            </div>
+            <pre><code><span class="token-comment"># Pipe: chain commands with |</span>
+<span class="token-keyword">$</span> <span class="token-fn">cat</span> <span class="token-string">names.txt</span> | <span class="token-fn">sort</span>
+<span class="token-comment"># Sorts the lines alphabetically</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">cat</span> <span class="token-string">names.txt</span> | <span class="token-fn">sort</span> | <span class="token-fn">uniq</span>
+<span class="token-comment"># Sort + remove duplicates</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">ls</span> <span class="token-attr">-la</span> | <span class="token-fn">grep</span> <span class="token-string">".js"</span>
+<span class="token-comment"># List only JS files</span>
+
+<span class="token-keyword">$</span> <span class="token-fn">ps</span> <span class="token-attr">aux</span> | <span class="token-fn">grep</span> <span class="token-string">node</span> | <span class="token-fn">wc</span> <span class="token-attr">-l</span>
+<span class="token-comment"># Count node processes</span>
+
+<span class="token-comment"># Redirect output to a file</span>
+<span class="token-keyword">$</span> <span class="token-fn">echo</span> <span class="token-string">"hello"</span> <span class="token-attr">&gt;</span> <span class="token-string">file.txt</span>    <span class="token-comment"># overwrite</span>
+<span class="token-keyword">$</span> <span class="token-fn">echo</span> <span class="token-string">"world"</span> <span class="token-attr">&gt;&gt;</span> <span class="token-string">file.txt</span>   <span class="token-comment"># append</span>
+
+<span class="token-comment"># Save command output</span>
+<span class="token-keyword">$</span> <span class="token-fn">ls</span> <span class="token-attr">-la</span> <span class="token-attr">&gt;</span> <span class="token-string">filelist.txt</span>
+
+<span class="token-comment"># Combine: find TODOs and save to file</span>
+<span class="token-keyword">$</span> <span class="token-fn">grep</span> <span class="token-attr">-rn</span> <span class="token-string">"TODO"</span> <span class="token-string">src/</span> <span class="token-attr">&gt;</span> <span class="token-string">todos.txt</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">Read Terminal</span>
+      <span class="footer__copy">Workshop &middot; 2026</span>
+      <div class="footer__nav">
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

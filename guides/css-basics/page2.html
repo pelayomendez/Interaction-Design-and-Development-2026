@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS BASICS — Steps to Learn CSS</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles2.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <span class="nav__logo">CSS BASICS</span>
+    <ul class="nav__links">
+      <li><a href="#start-html">HTML First</a></li>
+      <li><a href="#box-model">Box Model</a></li>
+      <li><a href="#selectors">Selectors</a></li>
+      <li><a href="#cascade">Cascade</a></li>
+      <li><a href="#layout">Layout</a></li>
+      <li><a href="#devtools">DevTools</a></li>
+      <li><a href="#practice">Practice</a></li>
+    </ul>
+    <div class="nav__page-links">
+      <a href="index.html" class="nav__page-link">&larr; Home</a>
+      <a href="page3.html" class="nav__page-link">Modern CSS &rarr;</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero hero--page2" id="top">
+    <div class="hero__inner">
+      <span class="hero__label">Part 2</span>
+      <h1 class="hero__title">Steps to Learn<br /><em>How to Write CSS</em></h1>
+      <p class="hero__sub">A structured path from zero to confident — learn each layer before moving to the next.</p>
+      <a href="#start-html" class="btn btn--primary">Start Learning &rarr;</a>
+    </div>
+    <div class="hero__decoration" aria-hidden="true">
+      <span>&lt;div&gt; &lt;/div&gt;</span>
+      <span>box-sizing: border-box</span>
+      <span>.class #id element</span>
+      <span>display: flex | grid</span>
+      <span>Inspect Element</span>
+    </div>
+  </section>
+
+  <!-- SLIDE 1: START WITH HTML -->
+  <section class="slide slide--dark" id="start-html">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 1</span>
+        <h2 class="slide__title">Start with HTML</h2>
+        <p class="slide__subtitle-text">You can't style what you don't understand</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">CSS targets HTML elements — learn the structure first.</p>
+          <ul class="list list--neutral">
+            <li>Understand semantic tags: <code class="inline-code">&lt;header&gt;</code>, <code class="inline-code">&lt;main&gt;</code>, <code class="inline-code">&lt;section&gt;</code></li>
+            <li>Know the difference between block and inline</li>
+            <li>Write valid, well-nested HTML before adding styles</li>
+            <li>Use the right element for the job (not <code class="inline-code">&lt;div&gt;</code> for everything)</li>
+          </ul>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>Build 2-3 pages with <strong>zero CSS</strong> first. If the HTML makes sense without styles, you've got a solid foundation.</p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">good-structure.html</span>
+            </div>
+            <pre><code><span class="token-comment">&lt;!-- Semantic HTML = easier CSS --&gt;</span>
+<span class="token-tag">&lt;header&gt;</span>
+  <span class="token-tag">&lt;nav&gt;</span>
+    <span class="token-tag">&lt;a</span> <span class="token-attr">href</span>=<span class="token-string">"/"</span><span class="token-tag">&gt;</span>Logo<span class="token-tag">&lt;/a&gt;</span>
+    <span class="token-tag">&lt;ul&gt;</span>
+      <span class="token-tag">&lt;li&gt;</span><span class="token-tag">&lt;a</span> <span class="token-attr">href</span>=<span class="token-string">"/about"</span><span class="token-tag">&gt;</span>About<span class="token-tag">&lt;/a&gt;</span><span class="token-tag">&lt;/li&gt;</span>
+    <span class="token-tag">&lt;/ul&gt;</span>
+  <span class="token-tag">&lt;/nav&gt;</span>
+<span class="token-tag">&lt;/header&gt;</span>
+
+<span class="token-tag">&lt;main&gt;</span>
+  <span class="token-tag">&lt;article&gt;</span>
+    <span class="token-tag">&lt;h1&gt;</span>Page Title<span class="token-tag">&lt;/h1&gt;</span>
+    <span class="token-tag">&lt;p&gt;</span>Content goes here.<span class="token-tag">&lt;/p&gt;</span>
+  <span class="token-tag">&lt;/article&gt;</span>
+<span class="token-tag">&lt;/main&gt;</span>
+
+<span class="token-tag">&lt;footer&gt;</span>
+  <span class="token-tag">&lt;p&gt;</span>&amp;copy; 2026<span class="token-tag">&lt;/p&gt;</span>
+<span class="token-tag">&lt;/footer&gt;</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: BOX MODEL -->
+  <section class="slide slide--light" id="box-model">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 2</span>
+        <h2 class="slide__title">Learn the Box Model</h2>
+        <p class="slide__subtitle-text">Everything in CSS is a box</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Every element is a rectangle with four layers.</p>
+          <div class="box-model-diagram">
+            <div class="box-model-diagram__layer box-model-diagram__layer--margin">
+              <span class="box-model-diagram__label">margin</span>
+              <div class="box-model-diagram__layer box-model-diagram__layer--border">
+                <span class="box-model-diagram__label">border</span>
+                <div class="box-model-diagram__layer box-model-diagram__layer--padding">
+                  <span class="box-model-diagram__label">padding</span>
+                  <div class="box-model-diagram__layer box-model-diagram__layer--content">
+                    <span class="box-model-diagram__label">content</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Key rule:</h3>
+          <ul class="list list--good">
+            <li>Always use <code class="inline-code">box-sizing: border-box</code></li>
+            <li>Padding adds space inside the border</li>
+            <li>Margin adds space outside the border</li>
+            <li>Width includes padding + border (with border-box)</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">box-model.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Always start with this */</span>
+<span class="token-selector">*, *::before, *::after</span> <span class="token-brace">{</span>
+  <span class="token-prop">box-sizing</span>: <span class="token-value">border-box</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Now widths are predictable */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">width</span>: <span class="token-value">300px</span>;
+  <span class="token-prop">padding</span>: <span class="token-value">20px</span>;
+  <span class="token-prop">border</span>: <span class="token-value">2px solid gray</span>;
+  <span class="token-comment">/* Total width = 300px (not 344px!) */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Without border-box: */</span>
+<span class="token-comment">/* width = 300 + 20*2 + 2*2 = 344px */</span>
+
+<span class="token-comment">/* With border-box: */</span>
+<span class="token-comment">/* width = 300px (padding + border inside) */</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: SELECTORS & SPECIFICITY -->
+  <section class="slide slide--dark" id="selectors">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 3</span>
+        <h2 class="slide__title">Master Selectors &amp; Specificity</h2>
+        <p class="slide__subtitle-text">Know how CSS decides which rule wins</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Selectors target elements. Specificity decides conflicts.</p>
+          <div class="specificity-scale">
+            <div class="specificity-scale__item specificity-scale__item--element">
+              <span class="specificity-scale__score">0-0-1</span>
+              <code>p</code>
+              <span class="specificity-scale__desc">Element</span>
+            </div>
+            <div class="specificity-scale__item specificity-scale__item--class">
+              <span class="specificity-scale__score">0-1-0</span>
+              <code>.card</code>
+              <span class="specificity-scale__desc">Class</span>
+            </div>
+            <div class="specificity-scale__item specificity-scale__item--id">
+              <span class="specificity-scale__score">1-0-0</span>
+              <code>#header</code>
+              <span class="specificity-scale__desc">ID</span>
+            </div>
+            <div class="specificity-scale__item specificity-scale__item--inline">
+              <span class="specificity-scale__score">&infin;</span>
+              <code>style=""</code>
+              <span class="specificity-scale__desc">Inline</span>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">Rules to remember:</h3>
+          <ul class="list list--good">
+            <li>Prefer classes over IDs for styling</li>
+            <li>Keep selectors short and flat</li>
+            <li>Avoid <code class="inline-code">!important</code> — it's a last resort</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">specificity.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* 0-0-1 — element selector */</span>
+<span class="token-selector">p</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">black</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* 0-1-0 — class selector (wins!) */</span>
+<span class="token-selector">.intro</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">blue</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* 0-2-0 — two classes (even higher) */</span>
+<span class="token-selector">.card .intro</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">purple</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* 1-0-0 — ID (avoid for styling) */</span>
+<span class="token-selector">#header</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">red</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Same specificity? Last one wins */</span>
+<span class="token-selector">.text</span> <span class="token-brace">{</span> <span class="token-prop">color</span>: <span class="token-value">green</span>; <span class="token-brace">}</span>
+<span class="token-selector">.text</span> <span class="token-brace">{</span> <span class="token-prop">color</span>: <span class="token-value">orange</span>; <span class="token-brace">}</span> <span class="token-comment">/* wins */</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: THE CASCADE -->
+  <section class="slide slide--light" id="cascade">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 4</span>
+        <h2 class="slide__title">Understand the Cascade</h2>
+        <p class="slide__subtitle-text">CSS stands for Cascading Style Sheets</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">The cascade is how the browser resolves competing rules.</p>
+          <div class="cascade-order">
+            <div class="cascade-order__item">
+              <span class="cascade-order__num">1</span>
+              <div>
+                <strong>Origin &amp; Importance</strong>
+                <p>User agent &rarr; Author &rarr; Author !important</p>
+              </div>
+            </div>
+            <div class="cascade-order__item">
+              <span class="cascade-order__num">2</span>
+              <div>
+                <strong>Specificity</strong>
+                <p>ID &gt; Class &gt; Element</p>
+              </div>
+            </div>
+            <div class="cascade-order__item">
+              <span class="cascade-order__num">3</span>
+              <div>
+                <strong>Source Order</strong>
+                <p>Later rules override earlier ones</p>
+              </div>
+            </div>
+          </div>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>If a style isn't applying, check these three in order — the answer is almost always here.</p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">cascade.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Source order matters */</span>
+<span class="token-selector">.btn</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">gray</span>;
+<span class="token-brace">}</span>
+
+<span class="token-selector">.btn</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">blue</span>; <span class="token-comment">/* wins — later */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Specificity beats source order */</span>
+<span class="token-selector">.nav .btn</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">green</span>; <span class="token-comment">/* 0-2-0 wins */</span>
+<span class="token-brace">}</span>
+
+<span class="token-selector">.btn</span> <span class="token-brace">{</span>
+  <span class="token-prop">background</span>: <span class="token-value">red</span>; <span class="token-comment">/* 0-1-0 loses */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Inheritance — some props cascade down */</span>
+<span class="token-selector">body</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-family</span>: <span class="token-value">sans-serif</span>; <span class="token-comment">/* inherited */</span>
+  <span class="token-prop">color</span>: <span class="token-value">#333</span>;        <span class="token-comment">/* inherited */</span>
+  <span class="token-prop">border</span>: <span class="token-value">1px solid</span>;  <span class="token-comment">/* NOT inherited */</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: FLEXBOX & GRID -->
+  <section class="slide slide--dark" id="layout">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 5</span>
+        <h2 class="slide__title">Learn Flexbox &amp; Grid</h2>
+        <p class="slide__subtitle-text">The two modern layout systems</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Forget floats. These two handle all layout needs.</p>
+          <div class="layout-compare">
+            <div class="layout-compare__col layout-compare__col--flex">
+              <span class="layout-compare__title">Flexbox</span>
+              <p>One-dimensional — rows <strong>or</strong> columns</p>
+              <ul class="list list--neutral">
+                <li>Navbars, toolbars</li>
+                <li>Centering content</li>
+                <li>Distributing space</li>
+              </ul>
+            </div>
+            <div class="layout-compare__col layout-compare__col--grid">
+              <span class="layout-compare__title">Grid</span>
+              <p>Two-dimensional — rows <strong>and</strong> columns</p>
+              <ul class="list list--neutral">
+                <li>Page layouts</li>
+                <li>Card grids</li>
+                <li>Complex alignment</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">flex.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Flexbox — one direction */</span>
+<span class="token-selector">.navbar</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">flex</span>;
+  <span class="token-prop">justify-content</span>: <span class="token-value">space-between</span>;
+  <span class="token-prop">align-items</span>: <span class="token-value">center</span>;
+  <span class="token-prop">gap</span>: <span class="token-value">1rem</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Center anything */</span>
+<span class="token-selector">.center</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">flex</span>;
+  <span class="token-prop">place-items</span>: <span class="token-value">center</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+          <div class="code-block code-block--alt">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">grid.css</span>
+            </div>
+            <pre><code><span class="token-comment">/* Grid — two dimensions */</span>
+<span class="token-selector">.page</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">grid</span>;
+  <span class="token-prop">grid-template-columns</span>: <span class="token-value">250px 1fr</span>;
+  <span class="token-prop">grid-template-rows</span>: <span class="token-value">auto 1fr auto</span>;
+  <span class="token-prop">min-height</span>: <span class="token-value">100vh</span>;
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Responsive card grid */</span>
+<span class="token-selector">.cards</span> <span class="token-brace">{</span>
+  <span class="token-prop">display</span>: <span class="token-value">grid</span>;
+  <span class="token-prop">grid-template-columns</span>:
+    <span class="token-value">repeat(auto-fill, minmax(280px, 1fr))</span>;
+  <span class="token-prop">gap</span>: <span class="token-value">1.5rem</span>;
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: DEVTOOLS -->
+  <section class="slide slide--light" id="devtools">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 6</span>
+        <h2 class="slide__title">Use Browser DevTools</h2>
+        <p class="slide__subtitle-text">Your most powerful learning tool</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">Inspect, edit, and debug CSS in real time.</p>
+          <div class="devtools-keys">
+            <div class="devtools-keys__item">
+              <kbd class="devtools-keys__kbd">F12</kbd>
+              <span>Open DevTools</span>
+            </div>
+            <div class="devtools-keys__item">
+              <kbd class="devtools-keys__kbd">Ctrl+Shift+C</kbd>
+              <span>Inspect element</span>
+            </div>
+            <div class="devtools-keys__item">
+              <kbd class="devtools-keys__kbd">Styles panel</kbd>
+              <span>See applied CSS rules</span>
+            </div>
+            <div class="devtools-keys__item">
+              <kbd class="devtools-keys__kbd">Computed tab</kbd>
+              <span>See final values + box model</span>
+            </div>
+          </div>
+          <h3 class="slide__subtitle">What to look for:</h3>
+          <ul class="list list--good">
+            <li>Crossed-out rules = overridden by specificity</li>
+            <li>Grayed-out values = inherited</li>
+            <li>Toggle properties on/off to experiment</li>
+            <li>Edit values live in the browser</li>
+          </ul>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">DevTools — Styles Panel</span>
+            </div>
+            <pre><code><span class="token-comment">/* What you see in DevTools: */</span>
+
+<span class="token-comment">/* Active rule */</span>
+<span class="token-selector">.card</span> <span class="token-brace">{</span>
+  <span class="token-prop">padding</span>: <span class="token-value">1.5rem</span>;      <span class="token-comment">/* ✓ applied */</span>
+  <span class="token-prop">background</span>: <span class="token-value">white</span>;    <span class="token-comment">/* ✓ applied */</span>
+  <del><span class="token-prop">color</span>: <span class="token-value">black</span>;</del>        <span class="token-comment">/* ✗ overridden */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Winning rule (higher specificity) */</span>
+<span class="token-selector">.theme-dark .card</span> <span class="token-brace">{</span>
+  <span class="token-prop">color</span>: <span class="token-value">white</span>;         <span class="token-comment">/* ✓ wins */</span>
+<span class="token-brace">}</span>
+
+<span class="token-comment">/* Inherited from parent */</span>
+<span class="token-selector">body</span> <span class="token-brace">{</span>
+  <span class="token-prop">font-family</span>: <span class="token-value">sans-serif</span>; <span class="token-comment">/* inherited ↓ */</span>
+<span class="token-brace">}</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 7: PRACTICE -->
+  <section class="slide slide--dark" id="practice">
+    <div class="slide__inner">
+      <div class="slide__header">
+        <span class="slide__tag">Step 7</span>
+        <h2 class="slide__title">Practice with Real Projects</h2>
+        <p class="slide__subtitle-text">Reading docs is not enough — build things</p>
+      </div>
+      <div class="slide__body slide__body--two-col">
+        <div class="slide__text">
+          <p class="slide__lead">The fastest way to learn CSS is to build and break things.</p>
+          <div class="practice-list">
+            <div class="practice-list__item">
+              <span class="practice-list__level practice-list__level--beginner">Beginner</span>
+              <p>Recreate a simple landing page from a screenshot</p>
+            </div>
+            <div class="practice-list__item">
+              <span class="practice-list__level practice-list__level--intermediate">Intermediate</span>
+              <p>Build a responsive card grid with Flexbox or Grid</p>
+            </div>
+            <div class="practice-list__item">
+              <span class="practice-list__level practice-list__level--advanced">Advanced</span>
+              <p>Clone a real website's layout (header, sidebar, content)</p>
+            </div>
+            <div class="practice-list__item">
+              <span class="practice-list__level practice-list__level--challenge">Challenge</span>
+              <p>Build a dark/light theme toggle with CSS custom properties</p>
+            </div>
+          </div>
+          <div class="step-tip">
+            <span class="step-tip__icon">&#128161;</span>
+            <p>Don't aim for perfection — aim for <strong>understanding</strong>. Every broken layout teaches you something.</p>
+          </div>
+        </div>
+        <div class="slide__code-area">
+          <div class="code-block">
+            <div class="code-block__bar">
+              <span class="code-block__dot code-block__dot--red"></span>
+              <span class="code-block__dot code-block__dot--yellow"></span>
+              <span class="code-block__dot code-block__dot--green"></span>
+              <span class="code-block__file">learning-path.txt</span>
+            </div>
+            <pre><code><span class="token-comment">/* Your CSS learning roadmap */</span>
+
+<span class="token-selector">Week 1-2</span>  <span class="token-comment">→ HTML structure + Box model</span>
+<span class="token-selector">Week 3-4</span>  <span class="token-comment">→ Selectors + Specificity</span>
+<span class="token-selector">Week 5-6</span>  <span class="token-comment">→ Flexbox (build 3 layouts)</span>
+<span class="token-selector">Week 7-8</span>  <span class="token-comment">→ Grid (build 3 layouts)</span>
+<span class="token-selector">Week 9-10</span> <span class="token-comment">→ Responsive design</span>
+<span class="token-selector">Week 11-12</span> <span class="token-comment">→ Animations + transitions</span>
+
+<span class="token-comment">/* Resources */</span>
+<span class="token-selector">MDN</span>          <span class="token-comment">→ developer.mozilla.org</span>
+<span class="token-selector">CSS Tricks</span>   <span class="token-comment">→ css-tricks.com</span>
+<span class="token-selector">Flexbox Froggy</span> <span class="token-comment">→ flexboxfroggy.com</span>
+<span class="token-selector">Grid Garden</span>  <span class="token-comment">→ cssgridgarden.com</span>
+<span class="token-selector">Kevin Powell</span> <span class="token-comment">→ youtube.com/@KevinPowell</span></code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <span class="footer__logo">CSS BASICS</span>
+      <span class="footer__copy">Workshop · 2026</span>
+      <div class="footer__nav">
+        <a href="index.html" class="footer__back">&larr; Home</a>
+        <a href="page3.html" class="footer__back">Modern CSS &rarr;</a>
+        <a href="#top" class="footer__back">&uarr; Back to top</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
