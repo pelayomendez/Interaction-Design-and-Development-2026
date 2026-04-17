@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 5: Databases - Slide 5</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">NOSQL</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                WHEN TABLES<br>DON'T FIT
+            </h1>
+
+            <p class="body-text mb-6 max-w-2xl">
+                NoSQL databases trade the strict structure of SQL for flexibility. Instead of rows and columns, they store documents, key-value pairs, or graphs.
+            </p>
+
+            <div class="split-container">
+                <div>
+                    <p class="label-text mb-2" style="color: rgba(0,0,0,0.5);">SQL (RELATIONAL)</p>
+                    <div class="code-panel">
+                        <pre style="margin: 0; font-size: 0.78rem; line-height: 1.6;">users table:
+&#x250C;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x252C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2510;
+&#x2502; id &#x2502; name &#x2502; email         &#x2502;
+&#x251C;&#x2500;&#x2500;&#x2500;&#x2500;&#x253C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x253C;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2524;
+&#x2502;  1 &#x2502; Ana  &#x2502; ana@test.com  &#x2502;
+&#x2502;  2 &#x2502; Bob  &#x2502; bob@test.com  &#x2502;
+&#x2514;&#x2500;&#x2500;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2534;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2500;&#x2518;
+Strict schema. Every row same shape.</pre>
+                    </div>
+                </div>
+                <div>
+                    <p class="label-text mb-2" style="color: rgba(0,0,0,0.5);">NOSQL (DOCUMENT)</p>
+                    <div class="code-panel">
+                        <pre style="margin: 0; font-size: 0.78rem; line-height: 1.6;">// MongoDB / Firestore document
+{
+  "id": "user_001",
+  "name": "Ana",
+  "email": "ana@test.com",
+  "preferences": {
+    "theme": "dark",
+    "notifications": true
+  },
+  "tags": ["admin", "beta"]
+}
+// No fixed schema. Each doc differs.</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 5/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 41.67%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section5-slide04.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section5-slide06.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

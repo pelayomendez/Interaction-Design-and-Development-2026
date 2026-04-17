@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 5: Databases - Slide 4</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">POSTGRESQL</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                THE PRO'S<br>CHOICE
+            </h1>
+
+            <div class="max-w-3xl">
+                <p class="body-text mb-8">
+                    PostgreSQL (Postgres) is the world's most advanced open-source relational database. It's what Supabase, Railway, and most production apps use under the hood.
+                </p>
+
+                <div class="list-text mb-8">
+                    <i class="fas fa-shield-alt mr-3" style="color: var(--pokemon-blue);"></i> ACID compliant — data is never corrupted<br>
+                    <i class="fas fa-expand-arrows-alt mr-3" style="color: var(--pokemon-grass);"></i> Handles millions of rows with ease<br>
+                    <i class="fas fa-code mr-3" style="color: var(--pokemon-red);"></i> Full SQL support + JSON columns<br>
+                    <i class="fas fa-lock mr-3" style="color: var(--pokemon-yellow);"></i> Row-level security built in<br>
+                    <i class="fas fa-sync mr-3" style="color: var(--pokemon-blue);"></i> Realtime change notifications<br>
+                    <i class="fas fa-heart mr-3" style="color: var(--pokemon-grass);"></i> Free, open source, battle-tested since 1996
+                </div>
+
+                <div style="display: inline-block; background-color: rgba(0, 0, 0, 0.05); padding: 1rem 2rem; border-radius: 0.5rem;">
+                    <p class="body-text" style="margin: 0;">
+                        <strong>Supabase</strong> = PostgreSQL + auth + storage + realtime + a nice dashboard.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 4/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 33.33%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section5-slide03.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section5-slide05.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

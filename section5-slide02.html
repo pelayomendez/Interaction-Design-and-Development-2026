@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 5: Databases - Slide 2</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">FUNDAMENTALS</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                WHERE YOUR<br>DATA LIVES
+            </h1>
+
+            <p class="body-text mb-8 max-w-2xl">
+                A database is a structured system for storing, querying, and updating data. Without one, every page refresh loses everything.
+            </p>
+
+            <div class="split-container">
+                <div>
+                    <p class="label-text mb-2" style="color: rgba(0,0,0,0.5);">WITHOUT A DATABASE</p>
+                    <div class="code-panel">
+                        <pre style="margin: 0; font-size: 0.85rem; line-height: 1.6;">let todos = []  // resets on refresh
+todos.push({ text: "buy milk" })
+// gone when you close the tab</pre>
+                    </div>
+                </div>
+                <div>
+                    <p class="label-text mb-2" style="color: rgba(0,0,0,0.5);">WITH A DATABASE</p>
+                    <div class="code-panel">
+                        <pre style="margin: 0; font-size: 0.85rem; line-height: 1.6;">await supabase
+  .from('todos')
+  .insert({ text: 'buy milk' })
+// persisted forever, accessible
+// from any device, any session</pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 2/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 16.67%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section5-slide01.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section5-slide03.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

@@ -9,7 +9,9 @@ const NAVIGATION_CONFIG = {
         { id: 0, name: 'Web Fundamentals', totalSlides: 12 },
         { id: 1, name: 'Astro Basics', totalSlides: 12 },
         { id: 2, name: 'AI Integration', totalSlides: 12 },
-        { id: 3, name: 'Full Stack', totalSlides: 12 }
+        { id: 3, name: 'Full Stack', totalSlides: 12 },
+        { id: 4, name: 'Spec Driven Development', totalSlides: 12 },
+        { id: 5, name: 'Databases', totalSlides: 12 }
     ]
 };
 

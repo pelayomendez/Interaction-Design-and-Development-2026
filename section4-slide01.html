@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 4: Spec Driven Development - Slide 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">SECTION 04</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                SPEC DRIVEN<br>DEVELOPMENT
+            </h1>
+
+            <div class="max-w-3xl">
+                <p class="body-text mb-8">
+                    Stop vibe-coding. Learn to write clear specifications so that AI tools build exactly what you intend — and nothing else.
+                </p>
+
+                <div class="list-text">
+                    <i class="fas fa-file-alt mr-3" style="color: var(--pokemon-blue);"></i> Specs &amp; PRDs before code<br>
+                    <i class="fas fa-robot mr-3" style="color: var(--pokemon-grass);"></i> Claude as your dev partner<br>
+                    <i class="fas fa-puzzle-piece mr-3" style="color: var(--pokemon-red);"></i> Skills, commands &amp; MCP servers<br>
+                    <i class="fas fa-tools mr-3" style="color: var(--pokemon-yellow);"></i> honest-dd feedback tool
+                </div>
+            </div>
+
+            <div class="mt-8">
+                <div style="display: inline-block; background-color: rgba(0, 0, 0, 0.05); padding: 1rem 2rem; border-radius: 0.5rem;">
+                    <p class="body-text" style="margin: 0;">
+                        <strong>Tool: honest-dd</strong> — https://github.com/pelayomendez/honest-dd
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 1/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 8.33%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section3-slide12.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section4-slide02.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>
