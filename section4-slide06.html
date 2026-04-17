@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 4: Spec Driven Development - Slide 6</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">CLAUDE TOOLS</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                SKILLS &amp;<br>SLASH COMMANDS
+            </h1>
+
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    Claude Code lets you define reusable skills — custom slash commands that run predefined workflows on your codebase.
+                </p>
+
+                <div class="list-text mb-6">
+                    <i class="fas fa-slash mr-3" style="color: var(--pokemon-blue);"></i> /review, /security-review, /simplify built-in skills<br>
+                    <i class="fas fa-plus-circle mr-3" style="color: var(--pokemon-grass);"></i> Create custom skills in <code>.claude/commands/</code><br>
+                    <i class="fas fa-file-code mr-3" style="color: var(--pokemon-red);"></i> Skills are markdown files with instructions<br>
+                    <i class="fas fa-recycle mr-3" style="color: var(--pokemon-yellow);"></i> Reuse the same workflow across projects
+                </div>
+
+                <div class="split-container" style="gap: 1.5rem;">
+                    <div class="code-panel">
+                        <div class="label-text mb-2" style="color: var(--pokemon-blue); font-size: 0.7rem;">.claude/commands/spec-check.md</div>
+                        <p class="body-text" style="font-size: 0.85rem; margin: 0; line-height: 1.7; font-family: monospace;">
+                            # spec-check<br>
+                            Review the current file against the spec in SPEC.md. List any behavior that does not match an acceptance criterion.
+                        </p>
+                    </div>
+                    <div class="code-panel">
+                        <div class="label-text mb-2" style="color: var(--pokemon-grass); font-size: 0.7rem;">USAGE</div>
+                        <p class="body-text" style="font-size: 0.9rem; margin: 0; line-height: 1.7;">
+                            Type <strong>/spec-check</strong> in Claude Code to run it on the current file. Claude will compare the code against every criterion in your spec.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 6/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 50%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section4-slide05.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section4-slide07.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

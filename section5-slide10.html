@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 5: Databases - Slide 10</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">CRUD</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                CREATE READ<br>UPDATE DELETE
+            </h1>
+
+            <div class="max-w-3xl">
+                <p class="body-text mb-8">
+                    CRUD is the foundation of every data-driven app. Here's the complete pattern with Supabase.
+                </p>
+
+                <div class="list-text mb-8">
+                    <i class="fas fa-plus mr-3" style="color: var(--pokemon-blue);"></i> <strong>CREATE</strong>
+                    <span style="font-family: monospace; font-size: 0.9rem; background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem; display: block; margin-top: 0.25rem; margin-bottom: 0.75rem;">await supabase.from('items').insert({ name: 'new item' })</span>
+
+                    <i class="fas fa-search mr-3" style="color: var(--pokemon-grass);"></i> <strong>READ</strong>
+                    <span style="font-family: monospace; font-size: 0.9rem; background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem; display: block; margin-top: 0.25rem; margin-bottom: 0.75rem;">await supabase.from('items').select('*').eq('id', 1)</span>
+
+                    <i class="fas fa-edit mr-3" style="color: var(--pokemon-red);"></i> <strong>UPDATE</strong>
+                    <span style="font-family: monospace; font-size: 0.9rem; background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem; display: block; margin-top: 0.25rem; margin-bottom: 0.75rem;">await supabase.from('items').update({ done: true }).eq('id', 1)</span>
+
+                    <i class="fas fa-trash mr-3" style="color: var(--pokemon-yellow);"></i> <strong>DELETE</strong>
+                    <span style="font-family: monospace; font-size: 0.9rem; background: rgba(0,0,0,0.05); padding: 0.25rem 0.5rem; border-radius: 0.25rem; display: block; margin-top: 0.25rem; margin-bottom: 0.75rem;">await supabase.from('items').delete().eq('id', 1)</span>
+                </div>
+
+                <div style="display: inline-block; background-color: rgba(0, 0, 0, 0.05); padding: 1rem 2rem; border-radius: 0.5rem;">
+                    <p class="body-text" style="margin: 0;">
+                        <strong>Every web app is CRUD.</strong> Master these four, build anything.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 10/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 83.33%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section5-slide09.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section5-slide11.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>

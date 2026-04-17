@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section 4: Spec Driven Development - Slide 3</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;600;700&family=Saira+Condensed:wght@700;900&display=swap" rel="stylesheet">
+    <link href="shared-styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="slide-container">
+        <div class="dot-pattern"></div>
+        <div class="circle-overlay" style="width: 600px; height: 600px; top: -100px; right: -100px; opacity: 0.6;"></div>
+        <div class="circle-overlay" style="width: 500px; height: 500px; bottom: -200px; left: -100px; opacity: 0.4;"></div>
+
+        <div class="absolute top-8 right-10 z-20">
+            <div class="borcelle-pill">FULL STACK + AI</div>
+        </div>
+
+        <div class="z-10 px-20 pt-20 pb-32 flex-1 flex flex-col justify-center">
+            <div class="mb-4">
+                <span class="label-text" style="color: rgba(0, 0, 0, 0.5);">SPEC BASICS</span>
+            </div>
+
+            <h1 class="header-text mb-6">
+                A SPEC IS A<br>CONTRACT
+            </h1>
+
+            <div class="max-w-4xl">
+                <p class="body-text mb-6">
+                    A spec (specification or PRD) is a written description of what you want to build: goals, constraints, acceptance criteria, and edge cases — BEFORE you touch a prompt.
+                </p>
+
+                <div class="split-container" style="gap: 1.5rem; margin-bottom: 1.5rem;">
+                    <div class="code-panel">
+                        <div class="label-text mb-3" style="color: var(--pokemon-red);">BAD PROMPT</div>
+                        <p class="body-text" style="font-size: 1rem; margin: 0;">"Make a login form that works well"</p>
+                    </div>
+                    <div class="code-panel">
+                        <div class="label-text mb-3" style="color: var(--pokemon-grass);">SPEC</div>
+                        <p class="body-text" style="font-size: 0.9rem; margin: 0; line-height: 1.7;">
+                            Build a login form with:<br>
+                            — email + password fields<br>
+                            — validation on submit<br>
+                            — error messages below each field<br>
+                            — disabled submit while loading<br>
+                            — redirects to /dashboard on success
+                        </p>
+                    </div>
+                </div>
+
+                <div style="background-color: rgba(0, 0, 0, 0.05); padding: 1rem 2rem; border-radius: 0.5rem;">
+                    <p class="body-text" style="margin: 0;">
+                        The spec is the source of truth. The AI is the builder.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex items-center gap-4">
+            <span class="progress-indicator" id="progressText">Slide 3/12</span>
+            <div class="progress-bar">
+                <div class="progress-bar-fill" id="progressBarFill" style="width: 25%;"></div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-8 right-10 z-20 flex gap-4">
+            <a href="section4-slide02.html" id="prevSlide" class="nav-arrow">
+                <i class="fas fa-chevron-left text-black text-xl"></i>
+            </a>
+            <a href="section4-slide04.html" id="nextSlide" class="nav-arrow">
+                <i class="fas fa-chevron-right text-black text-xl"></i>
+            </a>
+        </div>
+    </div>
+
+    <script src="navigation.js"></script>
+</body>
+</html>
